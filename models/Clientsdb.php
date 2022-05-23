@@ -22,6 +22,23 @@
             }
         }
 
+        public function login($identifiant, $password){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM clients WHERE (contact = :identifiant OR email= :identifiant) AND password= :password";
+            $stmt = $connect->prepare($query);
+            $stmt->execute([
+                "identifiant" => $identifiant,
+                "password" => $password
+            ]);
+            $client = $stmt->fetch();
+            if ($client) {
+                return $client;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function insertClient($nom,$prenoms,$contact,$email,$password){
             $connect = $this->getConnexion();
             $query = "INSERT INTO clients(nom,prenoms,contact,email,password) VALUES(:nom,:prenoms,:contact,:email,:password)";

@@ -5,5 +5,4 @@
         $pass = md5($pass);
         return $pass;
     }
-
 ?>

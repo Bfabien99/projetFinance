@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <script src="<?= $_SERVER["REQUEST_URI"] ?>assets/js/jquery.js"></script>
-    <title>Document</title>
+    <title>Inscription</title>
     <style>
         .red{
             color: red;
@@ -21,27 +21,27 @@
     <form action="" method="post" id="form">
         <div class="group">
             <label for="nom">Entrer votre nom <span class="red">*</span></label>
-            <input type="text" name="nom" id="nom">
+            <input type="text" name="nom" required id="nom">
         </div>
         <div class="group">
             <label for="prenoms">Entrer votre prenoms <span class="red">*</span></label>
-            <input type="text" name="prenoms" id="prenoms">
+            <input type="text" name="prenoms" required id="prenoms">
         </div>
         <div class="group">
             <label for="contact">Entrer votre contact <span class="red">*</span></label>
-            <input type="text" name="contact" id="contact">
+            <input type="tel" name="contact" required id="contact">
         </div>
         <div class="group">
             <label for="email">Entrer votre email<span class="red">*</span></label>
-            <input type="text" name="email" id="email">
+            <input type="email" name="email" required id="email">
         </div>
         <div class="group">
             <label for="password">Créer un mot de passe <span class="red">*</span></label>
-            <input type="text" name="password" id="password">
+            <input type="password" name="password" required id="password">
         </div>
         <div class="group">
             <label for="password">Confirmer le mot de passe <span class="red">*</span></label>
-            <input type="text" name="cpassword" id="cpassword">
+            <input type="password" name="cpassword" required id="cpassword">
         </div>
         <button type="submit" id="submit">Envoyer</button>
     </form>

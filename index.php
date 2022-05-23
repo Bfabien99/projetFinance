@@ -11,7 +11,8 @@ $router = new AltoRouter();
 
 $router->map('GET',"/projetFinance/",function()
 {   
-    include 'views/home.php';
+    //include 'views/home.php';
+    include 'views/login.php';
 });
 
 

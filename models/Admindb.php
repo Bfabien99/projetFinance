@@ -22,6 +22,23 @@
             }
         }
 
+        public function login($identifiant, $password){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM admin WHERE (contact = :identifiant OR email= :identifiant) AND password= :password";
+            $stmt = $connect->prepare($query);
+            $stmt->execute([
+                "identifiant" => $identifiant,
+                "password" => $password
+            ]);
+            $admin = $stmt->fetch();
+            if ($admin) {
+                return $admin;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function allClient(){
             $connect = $this->getConnexion();
             $query = "SELECT * FROM clients";
