@@ -35,13 +35,14 @@
 </head>
 <body>
     <div class="navigation">
+        <h2>Admin</h2>
         <img src="https://via.placeholder.com/150" alt="" width="50px" height="50px" style="border-radius:50%;">
         <ul>
             <li><a href="">Informations</a></li>
             <li><a href="">Paramètres</a></li>
             <li><a href="">Liste des clients</a></li>
             <li><a href="">Historique</a></li>
-            <li><a href="">Déconnexion</a></li>
+            <li><a href="" class="disconnect">Déconnexion</a></li>
         </ul>
     </div>
 
@@ -53,5 +54,14 @@
     setInterval(function(){
         window.location.reload();
     },3000)
+
+        let deconnect = document.querySelector('.disconnect');
+
+        deconnect.addEventListener('click', function(e){
+            e.preventDefault();
+            if (confirm("Voulez-vous vraiment vous deconnecter ?") == true) {
+                window.location.href = "/projetFinance/admin/logout";
+                };
+            });
 </script>
 </html>

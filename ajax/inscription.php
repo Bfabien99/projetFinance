@@ -1,35 +1,54 @@
 <?php
+    require "../vendor/autoload.php";
     require_once "../models/Clientsdb.php";
-    include_once "../functions/encryptpass.php";
-    include_once "../functions/inputClean.php";
 
-if (!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['password']) && !empty($_POST['email'])) {
+    if (!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['password']) && !empty($_POST['email'])) {
 
-    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-        echo "<div class='alert alert-danger'>Votre email n'est pas valide</div>";
-        die();
-    }
+        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            echo "<div class='alert alert-danger'>Votre email n'est pas valide</div>";
+            die();
+        }
 
-    $client = new Clientsdb();
-    $contact = preg_replace('/[^0-9]/', '', $_POST['contact']);
+        $client = new Clientsdb();
 
-    $exist = $client->doubleUser(inputClean($_POST['email']));
+        // On verifie si le client n'existe pas
+        $exist = $client->doubleUser($_POST['email']);
 
-    if (!$exist) 
-    {
-        $result = $client->insertClient(inputClean($_POST['nom']),inputClean($_POST['prenoms']),inputClean($contact),inputClean($_POST['email']),encryptpass($_POST['password']));
-        if($result){
-           echo "ok"; 
+        if (!$exist) 
+        {
+            $result = $client->insertClient($_POST['nom'],$_POST['prenoms'],$_POST['contact'],$_POST['email'],$_POST['password']);
+            if($result){
+                $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587,'tls'))
+                        ->setUsername('fabienbrou99@gmail.com')
+                        ->setPassword('#FabienBrou99');
+                $mailer = new Swift_Mailer($transport);
+
+                // Create a message
+                $message = (new Swift_Message('Wonderful Subject'))// Objet
+                  ->setFrom(['john@doe.com' => 'X-BANK'])// Le nom
+                  ->setTo(['fabienbrou99@gmail.com', 'other@domain.org' => 'A name'])
+                  ->setBody('Here is the message itself')
+                  ;
+                
+                // Send the message
+                $result = $mailer->send($message);
+                if ($result) {
+                    echo "ok"; 
+                }
+                else {
+                    echo "<div class='alert alert-warning'>Erreur de confirmation...</div>";
+                }
+                
+            }
+            else {
+                echo "<div class='alert alert-warning'>Une erreur s'est produite lors de l'enregistrement...</div>";
+            }
         }
         else {
-            echo "<div class='alert alert-warning'>Une erreur s'est produite lors de l'enregistrement...</div>";
+            echo "<div class='alert alert-warning'>L'utilisateur existe déja!</div>";
         }
+        
     }
     else {
-        echo "<div class='alert alert-warning'>L'utilisateur existe déja!</div>";
+        echo "<div class='alert alert-danger'>Veuillez remplir tous les champs (*)</div>";
     }
-    
-}
-else {
-    echo "<div class='alert alert-danger'>Veuillez remplir tous les champs (*)</div>";
-}

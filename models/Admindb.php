@@ -2,6 +2,27 @@
 
     class Admindb{
 
+        // Méthode pour sécuriser les entrées
+        private function inputClean($post){
+            $post = trim($post);
+            $post = stripslashes($post);
+            $post = strip_tags($post);
+            $post = mb_strtolower($post);
+            $post = ucwords($post);
+            return $post;
+        }
+
+        private function encryptpass($pass){
+            $pass = sha1($pass);
+            $pass = md5($pass);
+            return $pass;
+        }
+
+        private function contactFormat($contact){
+            $new_contact = preg_replace('/[^0-9]/', '', $contact);
+            return $this->inputClean($new_contact);
+        }
+
         public function getConnexion(){
 
             try{
@@ -27,8 +48,8 @@
             $query = "SELECT * FROM admin WHERE (contact = :identifiant OR email= :identifiant) AND password= :password";
             $stmt = $connect->prepare($query);
             $stmt->execute([
-                "identifiant" => $identifiant,
-                "password" => $password
+                "identifiant" => $this->inputClean($identifiant),
+                "password" => $this->encryptpass($password)
             ]);
             $admin = $stmt->fetch();
             if ($admin) {

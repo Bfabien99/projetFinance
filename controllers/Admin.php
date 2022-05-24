@@ -2,12 +2,12 @@
 
     class Admin{
 
-        public function render(string $fichier, array $data = [], string $message = null){
+        private function render(string $fichier, array $data = [], string $message = null){
             extract($data);
 
             // On démarre le buffer
             ob_start();
-            require_once(ROOT.'views/'.strtolower(get_class($this)).'/'.$fichier.'.php');
+            require_once(ROOT.'views/'.strtolower('Admin').'/'.$fichier.'.php');
             $content = ob_get_clean();
 
             require_once(ROOT.'views/layout/adminpage.php');

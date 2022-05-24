@@ -1,16 +1,16 @@
 <?php
+    session_start();
     require_once "../models/Clientsdb.php";
     require_once "../models/Admindb.php";
-    include_once "../functions/encryptpass.php";
-    include_once "../functions/inputClean.php";
+
 
     if(!empty($_POST['identifiant']) && !empty($_POST['password'])){
 
         $client = new Clientsdb();
-        $isclient = $client->login(inputClean($_POST['identifiant']),encryptpass($_POST['password']));
+        $isclient = $client->login($_POST['identifiant'],$_POST['password']);
 
         $admin = new Admindb();
-        $isadmin = $admin->login(inputClean($_POST['identifiant']),encryptpass($_POST['password']));
+        $isadmin = $admin->login($_POST['identifiant'],$_POST['password']);
 
         if($isclient){
             $_SESSION['xbank_client_id'] = $isclient['id'];

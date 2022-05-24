@@ -104,14 +104,14 @@
                         success: function(data)
                         {
                             if(data == "ok"){
-                                $msg = "<div class='alert alert-success'>Inscription réussie</div>"
+                                $msg = "<div class='alert alert-success'>Inscription réussie, veuillez confirmer votre Email</div>"
                                 $('#msg').html($msg);
                                 setTimeout(function () {
                                     $('#form')[0].reset();
                                 },100)
                                 setTimeout(function () {
                                     $('#msg').html("")
-                                },2000)
+                                },7000)
                             }
                             else if(data !== "ok"){
                                 $('#msg').html(data)
