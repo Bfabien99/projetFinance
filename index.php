@@ -28,9 +28,9 @@ $router->map('GET',"/projetFinance/forget",function()
     $mailer = new Swift_Mailer($transport);
 
     // Create a message
-    $message = (new Swift_Message('Wonderful Subject'))
-      ->setFrom(['john@doe.com' => 'John Doe'])
-      ->setTo(['maredo6101@doerma.com', 'other@domain.org' => 'A name'])
+    $message = (new Swift_Message('Wonderful Subject'))// Objet
+      ->setFrom(['john@doe.com' => 'X-BANK'])// Le nom
+      ->setTo(['fabienbrou99@gmail.com', 'other@domain.org' => 'A name'])
       ->setBody('Here is the message itself')
       ;
     
