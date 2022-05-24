@@ -9,10 +9,27 @@ require ROOT.'controllers/Admin.php';
 
 $router = new AltoRouter();
 
+
+// HOMEPAGE
 $router->map('GET',"/projetFinance/",function()
 {   
-    //include 'views/home.php';
+    include 'views/home.php';
+});
+
+$router->map('GET',"/projetFinance/login",function()
+{   
     include 'views/login.php';
+});
+
+$router->map('GET',"/projetFinance/forget",function()
+{   
+    echo phpinfo();
+    include 'views/forget.php';
+});
+
+$router->map('GET',"/projetFinance/inscription",function()
+{   
+    include 'views/inscription.php';
 });
 
 
@@ -26,4 +43,5 @@ else
 {
 // no route was matched
     header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+    echo "PAGE NOT FOUND";
 }
