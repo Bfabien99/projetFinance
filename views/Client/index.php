@@ -1,10 +1,22 @@
 <h3>Bienvenue à vous <?= $datas['nom'] . " " . $datas['prenoms'] ;?></h3>
 <section>
-    <div class="solde alert alert-warning">
-        <h3>SOLDE</h3>
-        <p class="argent"><?= number_format($datas['solde'],'2',',','.');?> fcfa</p>
-    </div>
+    <div class="top">
 
+        <div class="solde alert alert-warning">
+            <h3>SOLDE</h3>
+            <p class="argent"><?= number_format($datas['solde'],'2',',','.');?> fcfa</p>
+        </div>
+        <div class="solde alert alert-success">
+            <h3>DEPOT TOTAL</h3>
+            <p class="argent"><?= number_format($depots,'2',',','.') ?? 0;?> fcfa</p>
+        </div>
+        <div class="solde alert alert-info">
+            <h3>RETRAIT TOTAL</h3>
+            <p class="argent"><?= number_format($retraits,'2',',','.') ?? 0;?> fcfa</p>
+        </div>
+
+    </div>
+   
     <div class="historique">
         <?php if(!empty($historiques)):?>
             <h4>Activité recente</h4>

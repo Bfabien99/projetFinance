@@ -217,6 +217,21 @@
             }
         }
 
+        // Pour obtenir le depot toal du client
+        public function depotTotal($id){
+            $connect = $this->getConnexion();
+            $query = "SELECT somme FROM depot WHERE client_id = $id";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $depot = $stmt->fetchAll();
+            if ($depot) {
+                return $depot;
+            }
+            else{
+                return false;
+            }
+        }
+
         // Pour faire un retrait
         public function withdraw($id, $somme){
             // On vérifie si le solde est suffisant pour faire le retrait
@@ -242,6 +257,21 @@
                 } 
             }
             
+        }
+
+        // Pour obtenir le retrait toal du client
+        public function retraitTotal($id){
+            $connect = $this->getConnexion();
+            $query = "SELECT somme FROM retrait WHERE client_id = $id";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $retrait = $stmt->fetchAll();
+            if ($retrait) {
+                return $retrait;
+            }
+            else{
+                return false;
+            }
         }
 
         // Pour créer l'historique des transactions (depot ou retrait)

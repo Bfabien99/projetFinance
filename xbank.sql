@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 23 mai 2022 à 17:51
+-- Généré le : mar. 24 mai 2022 à 18:14
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.28
 
@@ -65,7 +65,9 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `nom`, `prenoms`, `contact`, `email`, `password`, `solde`, `date_creation`) VALUES
-(8, 'Brou', 'Kouadio Stéphane Fabien', '0153148864', 'Fabienbrou99@gmail.com', '8082b382bea4c85367617e7271768276', 0, '2022-05-23 15:07:08');
+(8, 'Brou', 'Kouadio Stéphane Fabien', '0153148864', 'Fabienbrou99@gmail.com', '8082b382bea4c85367617e7271768276', 6300, '2022-05-23 15:07:08'),
+(10, 'Brou', 'FfffEEFEF Ef', '', 'Maredo6101@doerma.com', '8843028fefce50a6de50acdf064ded27', 0, '2022-05-24 10:41:30'),
+(11, 'Taryn Nolan', 'Prttra Wunscdd', '6217310775', 'Your.email+fakedata15377@gmail.com', 'd17a77691095a32bc500279675aeadd2', 0, '2022-05-24 10:43:34');
 
 -- --------------------------------------------------------
 
@@ -80,6 +82,14 @@ CREATE TABLE `depot` (
   `date_depot` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `depot`
+--
+
+INSERT INTO `depot` (`depot_id`, `client_id`, `somme`, `date_depot`) VALUES
+(1, 8, 20000, '2022-05-24 16:02:06'),
+(2, 8, 2000, '2022-05-24 16:03:42');
+
 -- --------------------------------------------------------
 
 --
@@ -89,9 +99,22 @@ CREATE TABLE `depot` (
 CREATE TABLE `historiques` (
   `historique_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
+  `somme` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
   `date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `historiques`
+--
+
+INSERT INTO `historiques` (`historique_id`, `client_id`, `somme`, `type`, `date`) VALUES
+(1, 8, 20000, 'depot', '2022-05-24 16:02:06'),
+(2, 8, 12000, 'retrait', '2022-05-24 16:03:15'),
+(3, 8, 2000, 'depot', '2022-05-24 16:03:42'),
+(4, 8, 1500, 'retrait', '2022-05-24 16:03:57'),
+(5, 8, 1200, 'retrait', '2022-05-24 16:10:22'),
+(6, 8, 1000, 'retrait', '2022-05-24 16:11:13');
 
 -- --------------------------------------------------------
 
@@ -105,6 +128,16 @@ CREATE TABLE `retrait` (
   `somme` int(11) NOT NULL,
   `date_retrait` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `retrait`
+--
+
+INSERT INTO `retrait` (`retrait_id`, `client_id`, `somme`, `date_retrait`) VALUES
+(1, 8, 12000, '2022-05-24 16:03:15'),
+(2, 8, 1500, '2022-05-24 16:03:57'),
+(3, 8, 1200, '2022-05-24 16:10:22'),
+(4, 8, 1000, '2022-05-24 16:11:13');
 
 --
 -- Index pour les tables déchargées
@@ -157,25 +190,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `depot`
 --
 ALTER TABLE `depot`
-  MODIFY `depot_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `depot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `historiques`
 --
 ALTER TABLE `historiques`
-  MODIFY `historique_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `historique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `retrait`
 --
 ALTER TABLE `retrait`
-  MODIFY `retrait_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `retrait_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées

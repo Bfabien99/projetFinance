@@ -17,7 +17,7 @@
         $('#form').on('submit',function(e){
             e.preventDefault();
             var montant = $('#montant').val();
-
+            $('#msg').append("<img src ='/projetFinance/assets/img/loading_icon.gif' />")
             $.ajax({
                 url: '/projetFinance/ajax/depot.php',
                 type: 'POST',

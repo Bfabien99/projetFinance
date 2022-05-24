@@ -41,7 +41,7 @@
         
         <ul>
             <li><a href="/projetFinance/customer">Accueil</a></li>
-            <li><a href="">Historique</a></li>
+            <li><a href="/projetFinance/customer/historical">Historique</a></li>
             <li><a href="">Compte</a></li>
             <li><a href="/projetFinance/customer/deposite">Dépôt</a></li>
             <li><a href="/projetFinance/customer/withdraw">Retrait</a></li>

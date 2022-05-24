@@ -63,18 +63,39 @@ $router->map('GET',"/projetFinance/admin",function()
 ### CUSTOMER PAGE ###
     ### GET METHOD
 // $router->map('GET',"/projetFinance/customer",function(){});
+
 # LOG OUT (déconnexion client)
 $router->map('GET',"/projetFinance/customer/logout",function(){
     unset($_SESSION['xbank_client_id']);
     header('location:/projetFinance/login');
 });
 
+#FAIRE UN DEPOT (POST en ajax)
 $router->map('GET',"/projetFinance/customer/deposite",function(){
+    if (!($_SESSION['xbank_client_id'])) {
+        header('location:/projetFinance/login');
+    }
+
     Client::pageDepot();
 });
 
+#FAIRE UN RETRAIT (POST en ajax)
 $router->map('GET',"/projetFinance/customer/withdraw",function(){
+    if (!($_SESSION['xbank_client_id'])) {
+        header('location:/projetFinance/login');
+    }
+
     Client::pageRetrait();
+});
+
+#VOIR L'HISTORIQUE
+$router->map('GET',"/projetFinance/customer/historical",function(){
+    if (!($_SESSION['xbank_client_id'])) {
+        header('location:/projetFinance/login');
+    }
+
+    $client = new Client();
+    $client->historical($_SESSION['xbank_client_id'],20);
 });
 
 ### ADMIN PAGE ###
