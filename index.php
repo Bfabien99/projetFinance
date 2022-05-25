@@ -90,7 +90,8 @@ $router->map('GET',"/projetFinance/customer/historical",function(){
         header('location:/projetFinance/login');
     }
 
-    
+    $client = new Client();
+    $client->historical($_SESSION['xbank_client_id'],10);
 });
 
 # VOIR LE COMPTE

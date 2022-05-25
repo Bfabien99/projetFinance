@@ -268,7 +268,7 @@
         // Pour obtenir le depot toal du client
         public function depotTotal($id){
             $connect = $this->getConnexion();
-            $query = "SELECT somme FROM depot WHERE client_id = $id";
+            $query = "SELECT somme, date_depot FROM depot WHERE client_id = $id";
             $stmt = $connect->prepare($query);
             $stmt->execute();
             $depot = $stmt->fetchAll();

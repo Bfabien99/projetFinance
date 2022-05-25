@@ -1,5 +1,5 @@
-<h1>DEPOT</h1>
 <form action="" method="post" id="form">
+    <h1>FAIRE UN DEPOT</h1>
     <div id="msg"></div>
     <div class="group">
         <label for="label">Montant à déposer</label>

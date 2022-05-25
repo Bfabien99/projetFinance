@@ -72,10 +72,34 @@
         // Page Compte
         public function account($id){
             $client = new Clientsdb();
+            $customer = $client->getClient($id);
             $depotLength = $client->depotTotal($id) ?? 0;
             $retraitLength = $client->retraitTotal($id) ?? 0;
 
-            $this->render('compte',compact("depotLength","retraitLength"));
+           // Pour avoir le dépot total
+            $depotTotal = 0;
+            if ($depotLength) {
+                foreach ($depotLength as $depot) {
+                    $depotTotal+= $depot["somme"];
+                }
+            }
+            
+            // Pour avoir le retrait total
+            $retraitTotal = 0;
+            if($retraitLength){
+                foreach ($retraitLength as $retrait) {
+                    $retraitTotal+= $retrait["somme"];
+                }
+            }
+
+            // Pour avoir l'historique
+            $historiques = $client->getHistorical($id,20);
+            $bilans = [];
+            foreach ($historiques as $value) {
+                $bilans [] = ["somme" => $value['somme'],"date" => date("d-m-Y G:i",strtotime($value['date'])),"type" => $value["type"]] ;
+            }
+
+            $this->render('compte',compact("depotLength","retraitLength","bilans","depotTotal","retraitTotal","customer"));
         }
 
 

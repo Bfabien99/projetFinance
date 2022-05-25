@@ -1,5 +1,5 @@
-<h1>RETRAIT</h1>
 <form action="" method="post" id="form">
+    <h1>FAIRE UN RETRAIT</h1>
     <div id="msg"></div>
     <div class="group">
         <label for="label">Montant à retirer</label>
