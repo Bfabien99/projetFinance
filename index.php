@@ -2,17 +2,22 @@
 session_start();
 // On génère une constante qui contiendra le chemin vers index.php
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+
 # Relier le vendor
 require ROOT.'vendor/autoload.php';
-# Relier le Controller
+
+# Relier les Models
 require ROOT.'models/Admindb.php';
-require ROOT.'controllers/Admin.php';
 require ROOT.'models/Clientsdb.php';
+
+# Relier les Controllers
+require ROOT.'controllers/Admin.php';
 require ROOT.'controllers/Client.php';
 
+# Initialisation du router
 $router = new AltoRouter();
 
-// HOMEPAGE
+### HOMEPAGE
 $router->map('GET',"/projetFinance/",function()
 {   
     include 'views/home.php';
@@ -36,7 +41,8 @@ $router->map('GET',"/projetFinance/inscription",function()
     include 'views/inscription.php';
 });
 
-### INDEX PAGE
+### AFTER LOGIN INDEX PAGE
+# Route for customer
 $router->map('GET',"/projetFinance/customer",function()
 {   
     if (!empty($_SESSION['xbank_client_id'])) {
@@ -48,6 +54,18 @@ $router->map('GET',"/projetFinance/customer",function()
     }
 });
 
+# Confirmation email
+$router->map('GET',"/projetFinance/confirm/[*:slug]",function($slug){
+    $client = new Client();
+    if($client->confirmMail($_SESSION['xbank_confirm_mail'],$slug)){
+        include 'views/confirmation.php';
+    }
+    else {
+        die('<div><h1 style="text-align:center;">ERREUR LORS DE LA CONFIRMATION<h1></div>');
+    }
+});
+
+# Route for admin
 $router->map('GET',"/projetFinance/admin",function()
 {   
     if (!empty($_SESSION['xbank__id'])) {
@@ -60,9 +78,30 @@ $router->map('GET',"/projetFinance/admin",function()
     
 });
 
-### CUSTOMER PAGE ###
-    ### GET METHOD
+#####################
+### CUSTOMER PAGE ##################
+####################
+
+### GET METHOD
 // $router->map('GET',"/projetFinance/customer",function(){});
+# VOIR L'HISTORIQUE
+$router->map('GET',"/projetFinance/customer/historical",function(){
+    if (!($_SESSION['xbank_client_id'])) {
+        header('location:/projetFinance/login');
+    }
+
+    
+});
+
+# VOIR LE COMPTE
+$router->map('GET',"/projetFinance/customer/account",function(){
+    if (!($_SESSION['xbank_client_id'])) {
+        header('location:/projetFinance/login');
+    }
+
+    $client = new Client();
+    $client->account($_SESSION['xbank_client_id']);
+});
 
 # LOG OUT (déconnexion client)
 $router->map('GET',"/projetFinance/customer/logout",function(){
@@ -70,7 +109,7 @@ $router->map('GET',"/projetFinance/customer/logout",function(){
     header('location:/projetFinance/login');
 });
 
-#FAIRE UN DEPOT (POST en ajax)
+# FAIRE UN DEPOT (POST en ajax)
 $router->map('GET',"/projetFinance/customer/deposite",function(){
     if (!($_SESSION['xbank_client_id'])) {
         header('location:/projetFinance/login');
@@ -79,7 +118,7 @@ $router->map('GET',"/projetFinance/customer/deposite",function(){
     Client::pageDepot();
 });
 
-#FAIRE UN RETRAIT (POST en ajax)
+# FAIRE UN RETRAIT (POST en ajax)
 $router->map('GET',"/projetFinance/customer/withdraw",function(){
     if (!($_SESSION['xbank_client_id'])) {
         header('location:/projetFinance/login');
@@ -88,18 +127,21 @@ $router->map('GET',"/projetFinance/customer/withdraw",function(){
     Client::pageRetrait();
 });
 
-#VOIR L'HISTORIQUE
-$router->map('GET',"/projetFinance/customer/historical",function(){
+# VOIR LES PARAMETRES
+$router->map('GET',"/projetFinance/customer/settings",function(){
     if (!($_SESSION['xbank_client_id'])) {
         header('location:/projetFinance/login');
     }
 
-    $client = new Client();
-    $client->historical($_SESSION['xbank_client_id'],20);
+    include 'views/Client/compte.php';
 });
 
-### ADMIN PAGE ###
-    ### GET METHOD
+##################
+### ADMIN PAGE ###################
+################
+
+## GET METHOD ##
+
 # LOG OUT (déconnexion admin)
 $router->map('GET',"/projetFinance/admin/logout",function(){
     unset($_SESSION['xbank_id']);
@@ -116,6 +158,6 @@ if( is_array($match) && is_callable( $match['target'] ) )
 else 
 {
 // no route was matched
-    header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+    header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
     echo "PAGE NOT FOUND";
 }

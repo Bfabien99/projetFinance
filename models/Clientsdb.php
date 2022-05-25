@@ -3,7 +3,7 @@
     class Clientsdb{
         
         // Méthode pour sécuriser les entrées
-        private function inputClean($post){
+        public function inputClean($post){
             $post = trim($post);
             $post = stripslashes($post);
             $post = strip_tags($post);
@@ -50,7 +50,7 @@
         // Pour se connecter à son espace client
         public function login($identifiant, $password){
             $connect = $this->getConnexion();
-            $query = "SELECT * FROM clients WHERE (contact = :identifiant OR email= :identifiant) AND password= :password";
+            $query = "SELECT * FROM clients WHERE (contact = :identifiant OR email= :identifiant) AND password= :password AND enable = 1";
             $stmt = $connect->prepare($query);
             $stmt->execute([
                 "identifiant" => $this->inputClean($identifiant),
@@ -104,7 +104,7 @@
             }
         }
 
-        // Pour récuper les informations d'un client
+        // Pour récuper les informations d'un client à partir de l'id
         public function getClient($id){
             $connect = $this->getConnexion();
             $query = "SELECT * FROM clients WHERE id = $id";
@@ -119,10 +119,25 @@
             }
         }
 
+        // Pour vérifier qu'une email existe dans la bdd
+        public function getClientbyEmail($email){
+            $connect = $this->getConnexion();
+            $query = 'SELECT email FROM clients WHERE email = '.'"'.$email.'"';
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $client = $stmt->fetch();
+            if ($client) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
         // Pour vérifier les infos du client (mot de passe oublié)
         public function verifyClient($nom,$prenoms,$email,$contact){
             $connect = $this->getConnexion();
-            $query = "SELECT * FROM clients WHERE nom = :nom AND prenoms= :prenoms AND email= :email AND contact= :contact";
+            $query = "SELECT * FROM clients WHERE nom = :nom AND prenoms= :prenoms AND email= :email AND contact= :contact AND enable = 1";
             $stmt = $connect->prepare($query);
             $stmt->execute([
                 "nom" => $this->inputClean($nom),
@@ -133,6 +148,39 @@
             $client = $stmt->fetch();
             if ($client) {
                 return $client;
+            }
+            else{
+                return false;
+            }
+        }
+
+        // Pour confirmer l'email
+        public function confirmMailClient($email){
+            $connect = $this->getConnexion();
+            $query = "SELECT email FROM clients WHERE email = :email and enable = 0";
+            $stmt = $connect->prepare($query);
+            $stmt->execute([
+                "email" => $this->inputClean($email),
+            ]);
+            $client = $stmt->fetch();
+            if ($client) {
+                return $client['email'];
+            }
+            else{
+                return false;
+            }
+        }
+
+        // Pour activer le compte
+        public function enableClient($email){
+            $connect = $this->getConnexion();
+            $query = "UPDATE clients SET enable = 1 WHERE email = :email";
+            $stmt = $connect->prepare($query);
+            $enable = $stmt->execute([
+                "email" => $this->inputClean($email),
+            ]);
+            if ($enable) {
+                return true;
             }
             else{
                 return false;
@@ -157,7 +205,7 @@
         // Pour obtenir le solde d'un client
         public function getSolde($id){
             $connect = $this->getConnexion();
-            $query = "SELECT solde FROM clients WHERE id = $id";
+            $query = "SELECT solde FROM clients WHERE id = $id AND enable = 1";
             $stmt = $connect->prepare($query);
             $stmt->execute();
             $solde = $stmt->fetch();
@@ -170,9 +218,9 @@
         }
 
         // Pour augmenter le solde
-        public function plusSolde($id,$somme){
+        private function plusSolde($id,$somme){
             $connect = $this->getConnexion();
-            $query = "UPDATE clients SET solde = solde + $somme WHERE id = $id";
+            $query = "UPDATE clients SET solde = solde + $somme WHERE id = $id AND enable = 1";
             $stmt = $connect->prepare($query);
             $plus = $stmt->execute();
             if ($plus) {
@@ -184,9 +232,9 @@
         }
 
         // Pour diminuer le solde
-        public function moinSolde($id,$somme){
+        private function moinSolde($id,$somme){
             $connect = $this->getConnexion();
-            $query = "UPDATE clients SET solde = solde - $somme WHERE id = $id";
+            $query = "UPDATE clients SET solde = solde - $somme WHERE id = $id AND enable = 1";
             $stmt = $connect->prepare($query);
             $moin = $stmt->execute();
             if ($moin) {

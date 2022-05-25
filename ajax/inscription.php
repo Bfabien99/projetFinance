@@ -1,6 +1,8 @@
 <?php
+    session_start();
     require "../vendor/autoload.php";
     require_once "../models/Clientsdb.php";
+    include_once '../mail.php';
 
     if (!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['password']) && !empty($_POST['email'])) {
 
@@ -12,31 +14,21 @@
         $client = new Clientsdb();
 
         // On verifie si le client n'existe pas
-        $exist = $client->doubleUser($_POST['email']);
+        $exist = $client->doubleUser($client->inputClean($_POST['email']));
 
         if (!$exist) 
         {
             $result = $client->insertClient($_POST['nom'],$_POST['prenoms'],$_POST['contact'],$_POST['email'],$_POST['password']);
             if($result){
-                $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587,'tls'))
-                        ->setUsername('fabienbrou99@gmail.com')
-                        ->setPassword('#FabienBrou99');
-                $mailer = new Swift_Mailer($transport);
-
-                // Create a message
-                $message = (new Swift_Message('Wonderful Subject'))// Objet
-                  ->setFrom(['john@doe.com' => 'X-BANK'])// Le nom
-                  ->setTo(['fabienbrou99@gmail.com', 'other@domain.org' => 'A name'])
-                  ->setBody('Here is the message itself')
-                  ;
-                
-                // Send the message
-                $result = $mailer->send($message);
-                if ($result) {
+                $email = $client->inputClean($_POST['email']);
+                $_SESSION['xbank_confirm_mail'] = $email;
+                $code = crypt($email,'md5');
+                $message = "<a target='_blank' href='http://localhost/projetFinance/confirm/$code'>confirmation</a>";
+                if (sendMail("Inscription X-BANK","Veuillez confirmer vorte inscription en cliquant ici $message",$_POST['email'])) {
                     echo "ok"; 
                 }
                 else {
-                    echo "<div class='alert alert-warning'>Erreur de confirmation...</div>";
+                    echo "<div class='alert alert-warning'>Oops une erreur c'est produite, veuillez patienter...</div>";
                 }
                 
             }

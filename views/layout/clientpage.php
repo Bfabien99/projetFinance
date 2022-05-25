@@ -42,10 +42,10 @@
         <ul>
             <li><a href="/projetFinance/customer">Accueil</a></li>
             <li><a href="/projetFinance/customer/historical">Historique</a></li>
-            <li><a href="">Compte</a></li>
+            <li><a href="/projetFinance/customer/account">Compte</a></li>
             <li><a href="/projetFinance/customer/deposite">Dépôt</a></li>
             <li><a href="/projetFinance/customer/withdraw">Retrait</a></li>
-            <li><a href="">Paramètres</a></li>
+            <li><a href="/projetFinance/customer/settings">Paramètres</a></li>
             <li><a href="" class="disconnect">Déconnexion</a></li>
         </ul>
     </div>

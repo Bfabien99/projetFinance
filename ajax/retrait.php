@@ -2,6 +2,7 @@
     session_start();
     require_once "../models/Clientsdb.php";
     require_once "../vendor/autoload.php";
+    include_once '../mail.php';
 
     if(!empty($_POST['montant'])){
         $montant = $_POST['montant'];
@@ -19,31 +20,25 @@
 
                 if(($montant % 100) == 0){
                     $client = new Clientsdb();
+                    $customer = $client->getClient($_SESSION['xbank_client_id']);
+                    
                     $solde = $client->getSolde($_SESSION['xbank_client_id']);
                     $solde = (int)$solde['solde'];
 
                     if($montant <= $solde){
                         $depot = $client->withdraw($_SESSION['xbank_client_id'], $montant);
                         if ($depot) {
-                            $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587,'tls'))
-                            ->setUsername('fabienbrou99@gmail.com')
-                            ->setPassword('#FabienBrou99');
-                            $mailer = new Swift_Mailer($transport);
-
-                            // Create a message
-                            $message = (new Swift_Message('Action effectué sur X-BANK'))// Objet
-                                ->setFrom(['john@doe.com' => 'X-BANK'])// Le nom
-                                ->setTo(['fabienbrou99@gmail.com', 'other@domain.org' => 'A name'])
-                                ->setBody('Vous venez d\'éffectuer un retrait de <strong>'.$montant.'</strong> fcfa')
-                                ->setContentType("text/html");
-
-                            // Send the message
-                            $mailer->send($message);
-
-                            
                             echo "<div class='alert alert-success'>Retrait effectué avec succès</div>";
                             echo "<div class='alert alert-info'>Nouveau solde: ".($solde - ($montant))." fcfa</div>";
-                            
+
+                            $message = "Vous venez de faire un retrait de <strong>$montant fcfa</strong> sur votre compte.";
+
+                            if(sendMail('XBANK - Transaction éffectuée',$message,$customer['email'])){
+                                echo "<div class='alert alert-warning'> Un mail vous a été adressé</div>";
+                            }
+                            else {
+                                echo "<div class='alert alert-warning'> Un mail vous sera adressé</div>";
+                            }
                             
                         }
                     }

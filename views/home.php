@@ -19,6 +19,6 @@
     Nobis aliquid obcaecati tempore consectetur illum? Molestias dolorem error quod tempore quam necessitatibus tempora fugit sit vero a excepturi vitae aliquam dicta, quia, nobis mollitia unde soluta amet, cupiditate quaerat.
     Modi, unde fugiat est numquam, debitis perferendis possimus iste labore maiores dignissimos aperiam excepturi quod iusto nostrum minima harum fugit. Neque asperiores sint beatae corporis excepturi iusto animi aspernatur ullam.
     Ex, ab cum! Tempore, nemo nisi quam sint dicta in officiis porro illo nihil! Amet, aperiam! Accusamus blanditiis facere esse vitae maxime itaque, quis eveniet in voluptatibus, iusto illo cum?</p>
-    <a href="login">Login</a><a href="inscription.php">Ouvrir un compte</a>
+    <a href="login">Login</a><a href="inscription">Ouvrir un compte</a>
 </body>
 </html>

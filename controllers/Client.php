@@ -47,20 +47,54 @@
             
         }
 
+        public function confirmMail($email, $hash){
+            $client = new Clientsdb();
+            $mailget = $client->confirmMailClient($email);
+            if($mailget){
+                if(password_verify($email, $hash)){
+                    $client->enableClient($email);
+                    return true;
+                }
+                else {
+                   return false;
+                }
+            }
+            else{
+                if ($client->getClientbyEmail($email)) {
+                    if(password_verify($email, $hash)){
+                        die('<div><h1 style="text-align:center;">VOUS ETES DEJA INSCRIT<h1></div>');
+                    }
+                }
+            }
+            
+        }
+
+        // Page Compte
+        public function account($id){
+            $client = new Clientsdb();
+            $depotLength = $client->depotTotal($id) ?? 0;
+            $retraitLength = $client->retraitTotal($id) ?? 0;
+
+            $this->render('compte',compact("depotLength","retraitLength"));
+        }
+
+
         // Page Historique
         public function historical($id,$limit){
             $client = new Clientsdb();
             $historiques = $client->getHistorical($id,$limit);
-            $message = "$limit RECENTES ACTIVITES";
+            $message = "RECENTES ACTIVITES";
             if ($historiques) {
                     $this->render('historique',compact("historiques"),$message);
                 }
         }
 
+        // Page Depot
         public static function pageDepot(){
             return self::render('depot');
         }
 
+        // Page Retrait
         public static function pageRetrait(){
             return self::render('retrait');
         }
