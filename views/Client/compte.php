@@ -69,7 +69,7 @@
       <?php foreach($bilans as $historique):?>
         <?php if($historique['type'] == 'depot'):?>
           ['<?=$historique['date']?>', <?=$historique['somme']?>, 0],
-        <?else:?>
+        <?php else:?>
           ['<?=$historique['date']?>', 0,<?=$historique['somme']?>],
         <?php endif;?>
       <?php endforeach ?>

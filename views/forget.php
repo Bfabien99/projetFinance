@@ -52,11 +52,7 @@
                 data: {nom: nom, prenoms: prenoms, email: email, contact: contact},
                 success: function(data)
                 {
-                    if(data == "ok"){
-                        $msg = "<div class='alert alert-success'>Vous avez reçu un mail contenant votre nouveau mot de passe</div>";
-                        $('#msg').html($msg);
-                    }
-                    else{
+                    if(data){
                         $('#msg').html(data);
                     }
                 }

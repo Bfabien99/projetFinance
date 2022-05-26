@@ -14,6 +14,8 @@
 
             if($newPass){
                 echo "<div class='alert alert-success'>Mot de passe mis à jour</div>";
+                $message = "Votre nouveau mot de passe est <strong>{$_POST['password']}</strong>";
+                sendMail("XBANK - Mot de passe Mis à jour",$message,$_POST['email']);
             }
             else{
                 echo "<div class='alert alert-danger'>Oops, veuillez réessayer plus tard</div>";

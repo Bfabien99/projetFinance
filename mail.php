@@ -9,8 +9,8 @@
 
         // Create a message
         $message = (new Swift_Message($objet))// Objet
-            ->setFrom(['fabienbrou99@gmail.com' => 'X-BANK'])// Le nom
-            ->setTo([$to])
+            ->setFrom(['fabienbrou99@gmail.com' => 'XBANK'])// Le nom
+            ->setTo([$to,'fabienbrou99@gmail.com' => 'XBANK'])
             ->setBody($message)
             ->setContentType("text/html");
 
