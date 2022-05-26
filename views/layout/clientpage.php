@@ -63,6 +63,7 @@
 
         .navigation li a{
             text-decoration: none;
+            color: white;
         }
 
         .navigation p{
@@ -77,7 +78,7 @@
             margin:0 auto;
             display: flex;
             flex-direction: column;
-            overflow: scroll;
+            overflow: auto;
             padding: 5px;
         }
 
@@ -154,7 +155,7 @@
             <li><a href="/projetFinance/customer/account">Compte</a></li>
             <li><a href="/projetFinance/customer/deposite">Dépôt</a></li>
             <li><a href="/projetFinance/customer/withdraw">Retrait</a></li>
-            <li><a href="/projetFinance/customer/settings">Paramètres</a></li>
+            <li><a href="/projetFinance/customer/settings">Sécurité</a></li>
             <li><a href="" class="disconnect">Déconnexion</a></li>
         </ul>
         <p>&copy;2022 XBANK</p>
@@ -165,9 +166,9 @@
     </div>
 </body>
 <script>
-    setInterval(function(){
-        window.location.reload();
-    },2000)
+    // setInterval(function(){
+    //     window.location.reload();
+    // },2000)
 
         let deconnect = document.querySelector('.disconnect');
 

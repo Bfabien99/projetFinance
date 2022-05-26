@@ -134,7 +134,8 @@ $router->map('GET',"/projetFinance/customer/settings",function(){
         header('location:/projetFinance/login');
     }
 
-    include 'views/Client/compte.php';
+    $client = new Client();
+    $client->params($_SESSION['xbank_client_id']);
 });
 
 ##################

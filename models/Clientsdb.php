@@ -155,18 +155,18 @@
         }
 
         // Modifier information client
-        public function updateInfoClient($id,$nom, $prenoms, $contact, $photo)
+        public function updateInfoClient($id,$nom, $prenoms, $contact, $email)
         {
-            $database = new CDatabase();
-            $db = $database->dbconnect();
+            $connect = $this->getConnexion();
 
-            $query = $db->prepare("UPDATE clients SET nom=:nom, prenoms=:prenoms, contact=:contact WHERE id=$id");
+            $query = $connect->prepare("UPDATE clients SET nom=:nom, prenoms=:prenoms, contact=:contact, email=:email WHERE id=$id");
 
             $insert = $query->execute(
                 [
                     "nom" => $this->inputClean($nom),
                     "prenoms" => $this->inputClean($prenoms),
-                    "contact" => $this->contactFormat($contact)
+                    "contact" => $this->contactFormat($contact),
+                    "email" => $this->inputClean($email)
                 ]
             );
 
@@ -179,30 +179,6 @@
                 return false;
             } 
             
-        }
-
-        // Modifier information de connexion
-        public function updateLogin($id, $email, $password)
-        {
-            $connect = $this->getConnexion();
-
-            $query = $connect->prepare("UPDATE clients SET email=:email, password=:password WHERE id = $id");
-
-            $insert = $query->execute(
-                [
-                    "email" => $this->inputClean($email),
-                    "password" => $this->encryptpass($password)
-                ]
-            );
-            
-            if($insert)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         // Reinitialiser le mot de passe

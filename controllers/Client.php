@@ -42,9 +42,18 @@
             }
             
             if ($datas) {
-                    $this->render('index',compact("datas","historiques","depots","retraits"));
-                }
+                $this->render('index',compact("datas","historiques","depots","retraits"));
+            }
             
+        }
+
+        public function params($id){
+            $client = new Clientsdb();
+            $datas = $client->getClient($id);
+
+            if($datas){
+                $this->render('parametres',compact("datas"));
+            }
         }
 
         public function confirmMail($email, $hash){
