@@ -11,6 +11,7 @@
 <body>
     <h2>Récupération de mot de passe</h2>
     <form action="" method="post" id="form">
+        <div id="msg"></div>
         <div class="group">
             <label for="nom">Nom</label>
             <input type="text" name="nom" id="nom">
@@ -26,6 +27,11 @@
             <input type="email" name="email" id="email">
         </div>
 
+        <div class="group">
+            <label for="contact">Contact</label>
+            <input type="text" name="contact" id="contact">
+        </div>
+
         <button type="submit" id="submit">Envoyer</button>
     </form>
 </body>
@@ -38,22 +44,20 @@
             var nom = $('#nom').val();
             var prenoms = $('#prenoms').val();
             var email = $('#email').val();
+            var contact = $('#contact').val();
 
             $.ajax({
                 url: 'ajax/forget.php',
                 type: 'POST',
-                data: {nom: nom, prenoms: prenoms, email: email},
+                data: {nom: nom, prenoms: prenoms, email: email, contact: contact},
                 success: function(data)
                 {
                     if(data == "ok"){
-                        $msg;
+                        $msg = "<div class='alert alert-success'>Vous avez reçu un mail contenant votre nouveau mot de passe</div>";
                         $('#msg').html($msg);
                     }
                     else{
                         $('#msg').html(data);
-                        setTimeout(function() {
-                            $('#msg').html("");
-                        },5000)
                     }
                 }
             });

@@ -20,7 +20,7 @@
              <label for="password">Mot de passe</label>
             <input type="password" name="password" id="password">
         </div>
-
+        <a href="/projetFinance/forget" class="forget">Mot de passe oublié ?</a>
         <button type="submit" id="submit">Connecter</button>
     </form>
 </body>

@@ -154,6 +154,81 @@
             }
         }
 
+        // Modifier information client
+        public function updateInfoClient($id,$nom, $prenoms, $contact, $photo)
+        {
+            $database = new CDatabase();
+            $db = $database->dbconnect();
+
+            $query = $db->prepare("UPDATE clients SET nom=:nom, prenoms=:prenoms, contact=:contact WHERE id=$id");
+
+            $insert = $query->execute(
+                [
+                    "nom" => $this->inputClean($nom),
+                    "prenoms" => $this->inputClean($prenoms),
+                    "contact" => $this->contactFormat($contact)
+                ]
+            );
+
+            if($insert)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            } 
+            
+        }
+
+        // Modifier information de connexion
+        public function updateLogin($id, $email, $password)
+        {
+            $connect = $this->getConnexion();
+
+            $query = $connect->prepare("UPDATE clients SET email=:email, password=:password WHERE id = $id");
+
+            $insert = $query->execute(
+                [
+                    "email" => $this->inputClean($email),
+                    "password" => $this->encryptpass($password)
+                ]
+            );
+            
+            if($insert)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // Reinitialiser le mot de passe
+        public function defaultPass($email, $password)
+        {
+            $connect = $this->getConnexion();
+
+            $query = $connect->prepare("UPDATE clients SET password=:password WHERE email=:email");
+
+            $insert = $query->execute(
+                [
+                    "password" => $this->encryptpass($password),
+                    "email" => $this->inputClean($email)
+                ]
+            );
+            
+            if($insert)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         // Pour confirmer l'email
         public function confirmMailClient($email){
             $connect = $this->getConnexion();
