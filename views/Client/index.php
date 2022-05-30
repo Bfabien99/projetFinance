@@ -21,7 +21,7 @@
    
     <div class="historique">
         <?php if(!empty($historiques)):?>
-            <h4>Activité recente</h4>
+            <h4 class="title">Activité recente</h4>
             <hr>
             <?php foreach ($historiques as $historique):?>
                     <?php if($historique['type'] == 'depot'):?>

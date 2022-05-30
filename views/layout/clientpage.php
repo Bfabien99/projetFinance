@@ -277,6 +277,8 @@
                 flex-direction: row;
                 justify-content: space-around;
                 min-width: 900px;
+                padding: 5px;
+                gap: 1em;
             }
         }
 

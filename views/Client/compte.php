@@ -95,8 +95,6 @@
         legend: {position: 'top', maxLines: 3},
         title: 'Dix dernières transactions éffectuées (en Fcfa)',
         subtitle: 'Depot, Retrait',
-       'width': 800,
-       'height': 500
     };
 
 
