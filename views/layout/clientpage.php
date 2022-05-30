@@ -9,6 +9,8 @@
     <script src="/projetFinance/assets/js/jquery.js"></script>
     <title>Customer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+        
         html{
             scroll-behavior: smooth;
         }
@@ -17,6 +19,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Poppins, 'Playfair Display';
         }
 
         body{
