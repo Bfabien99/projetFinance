@@ -68,7 +68,7 @@ $router->map('GET',"/projetFinance/confirm/[*:slug]",function($slug){
 # Route for admin
 $router->map('GET',"/projetFinance/admin",function()
 {   
-    if (!empty($_SESSION['xbank__id'])) {
+    if (!empty($_SESSION['xbank_id'])) {
         $admin = new Admin();
         $admin->index();
     }
