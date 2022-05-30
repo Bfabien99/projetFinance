@@ -69,9 +69,15 @@
     <div class="link">
          <a href="login" class="login">Se Connecter</a><a href="inscription" class="signup">Ouvrir un compte</a>
     </div>
-    <h1 class="title">X-BANK</h1>
+    <div class="block">
+        <h1 class="title">X-BANK</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas eos eligendi vel, incidunt nesciunt deserunt itaque sunt nostrum voluptatem minima maiores sit soluta corporis maxime qui aliquid. Quod, dolorum.</p>
     </div>
-   
+    
+    <div class="block">
+        <h1 class="title">Pourquoi Choisir XBANK ?</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas eos eligendi vel, incidunt nesciunt deserunt itaque sunt nostrum voluptatem minima maiores sit soluta corporis maxime qui aliquid. Quod, dolorum.</p>
+    </div>
+    </div>
 </body>
 </html>
