@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="/projetFinance/assets/js/jquery.js"></script>
     <title>Customer</title>
     <style>
@@ -30,17 +31,19 @@
             width:100%;
             height: 100vh;
             max-width: 300px;
-            background-color: #333;
+            background-color: #fff;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #fff;
+            color: #ee1212;
+            border: 1px solid #ee0049;
         }
 
         .navigation h3{
             padding: 10px;
             margin-bottom: 2em;
+            text-decoration: underline;
         }
 
         .navigation ul{
@@ -55,14 +58,28 @@
         }
 
         .navigation ul li {
-            width: 100%;
-            background-color: blue;
-            text-align: center;
+            transition: all 0.2s;
+            width: 80%;
+            /* background-image: linear-gradient(to left, #ee1212, #f00031, #ee0049, #e9005f, #e00d72); */
             padding: 5px;
+            border-radius: 5px;
+            margin: 0 auto;
+            font-size: 1.3em;
         }
 
         .navigation li a{
             text-decoration: none;
+            color: #e00d72;
+            
+        }
+
+        .navigation li:hover{
+            background-image: linear-gradient(to left, #ee1212, #f00031, #ee0049, #e9005f, #e00d72);
+            color: white;
+            text-align: center;
+        }
+
+        .navigation li:hover a{
             color: white;
         }
 
@@ -72,8 +89,7 @@
         }
 
         .container{
-            width:100%;
-            max-width: 700px;
+            width: calc(100%-300px);
             height: 100vh;
             margin:0 auto;
             display: flex;
@@ -95,6 +111,19 @@
             color: white;
         }
 
+        /* Index Page */
+        .solde h3{
+            font-size: 1.3em;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .solde .argent{
+            font-size: 36px;
+            font-weight: 600;
+        }
+        /** fin **/
+
         form{
             display: flex;
             flex-direction: column;
@@ -104,8 +133,8 @@
             align-items: center;
             padding: 10px;
             gap: 1em;
-            border: 1px solid ;
             border-radius: 5px;
+            box-shadow: 0px 0px 1px #e00d72;
         }
 
         form .group{
@@ -116,11 +145,17 @@
         }
 
         form .group input{
+            transition: all 0.2s;
             outline: none;
-            border: 1px solid tomato;
-            max-width: 300px;
+            height: 30px;
             padding: 5px;
+            border: 1px solid #444;
             border-radius: 5px;
+            color: #e00d72;
+        }
+
+        form .group input:focus{
+            border: 1px solid #ee1212;
         }
 
         #delete{
@@ -143,20 +178,70 @@
             align-items: center;
         }
 
+        .line{
+            width: 200px;
+            height: 2px;
+            background-color: #e9005f;
+            margin: 0 auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
 
+        .bloc{
+            width: 100%;
+            text-align: center;
+            color: #ee0049;
+        }
+
+        /* Compte page */
+        #compte{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #compte .soldes, #compte .info{
+            width: 100%;
+        }
+
+        #compte .graph{
+            width: 100%;
+            height: 300px;
+            text-align: center;
+            margin: 5px;
+        }
+
+        /** fin **/
+
+        /* Params page */
+        #params{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1em;
+        }
+        /** fin **/
+        @media screen and (min-width : 1120px){
+            #index{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                min-width: 900px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="navigation">
         <h3>ESPACE CLIENT</h3>
         <ul>
-            <li><a href="/projetFinance/customer">Accueil</a></li>
-            <li><a href="/projetFinance/customer/historical">Historique</a></li>
-            <li><a href="/projetFinance/customer/account">Compte</a></li>
-            <li><a href="/projetFinance/customer/deposite">Dépôt</a></li>
-            <li><a href="/projetFinance/customer/withdraw">Retrait</a></li>
-            <li><a href="/projetFinance/customer/settings">Sécurité</a></li>
-            <li><a href="" class="disconnect">Déconnexion</a></li>
+            <li><i class="bi bi-house-door-fill"></i><a href="/projetFinance/customer">Accueil</a></li>
+            <li><i class="bi bi-clock-history"></i><a href="/projetFinance/customer/historical">Historique</a></li>
+            <li><i class="bi bi-briefcase"></i><a href="/projetFinance/customer/account">Compte</a></li>
+            <li><i class="bi bi-cash-stack"></i><a href="/projetFinance/customer/deposite">Dépôt</a></li>
+            <li><i class="bi bi-clipboard2-check"></i><a href="/projetFinance/customer/withdraw">Retrait</a></li>
+            <li><i class="bi bi-gear"></i><a href="/projetFinance/customer/settings">Sécurité</a></li>
+            <li><i class="bi bi-box-arrow-left"></i><a href="" class="disconnect">Déconnexion</a></li>
         </ul>
         <p>&copy;2022 XBANK</p>
     </div>
@@ -166,17 +251,13 @@
     </div>
 </body>
 <script>
-    // setInterval(function(){
-    //     window.location.reload();
-    // },2000)
+    let deconnect = document.querySelector('.disconnect');
 
-        let deconnect = document.querySelector('.disconnect');
-
-        deconnect.addEventListener('click', function(e){
-            e.preventDefault();
-            if (confirm("Voulez-vous vraiment vous deconnecter ?") == true) {
-                window.location.href = "/projetFinance/customer/logout";
-                };
-            });
+    deconnect.addEventListener('click', function(e){
+        e.preventDefault();
+        if (confirm("Voulez-vous vraiment vous deconnecter ?") == true) {
+            window.location.href = "/projetFinance/customer/logout";
+            };
+        });
 </script>
 </html>

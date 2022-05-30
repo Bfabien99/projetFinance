@@ -1,5 +1,7 @@
 <div id="params">
-    <h1>SECURITE</h1>
+    <div class="bloc">
+        <h2 class="title">SECURITE</h2>
+    </div>
     <?php if(!empty($datas)):?>
         <div class="first">
             <h3>Modifier mes informations</h3>

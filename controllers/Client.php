@@ -18,7 +18,7 @@
         public function index($id){
             $client = new Clientsdb();
             $datas = $client->getClient($id);
-            $historiques = $client->getHistorical($id,3);
+            $historiques = $client->getHistorical($id,4);
 
             // On récupère tous les éléments
             $depotTotal = $client->depotTotal($id);

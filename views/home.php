@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
         body{
-            background-color: #0d0c45;
+            background-image: linear-gradient(to bottom, #845ec2, #8051cd, #7b42d7, #7630e1, #7012eb);
             color: white;
             font-family: 'Playfair Display', Poppins, serif;
         }
@@ -20,6 +20,7 @@
             flex-direction: column;
             gap: 2em;
             padding: 10px;
+            min-height: 100vh;
         }
 
         .title{

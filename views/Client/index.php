@@ -1,7 +1,6 @@
-<h3>Bienvenue à vous <?= $datas['nom'] . " " . $datas['prenoms'] ;?></h3>
-<section>
+<section id="index">
     <div class="top">
-
+    <h3>Bienvenue à vous <?= $datas['nom'] . " " . $datas['prenoms'] ;?></h3>
         <div class="solde alert alert-warning">
             <h3>SOLDE</h3>
             <p class="argent"><?= number_format($datas['solde'],'2',',','.');?> fcfa</p>

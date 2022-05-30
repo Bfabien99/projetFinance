@@ -21,7 +21,7 @@
             echo "admin";
         }
         else{
-            echo "<div class='alert alert-danger'>Email/Pseudo ou mot de passe incorrect!</div>";
+            echo "<div class='alert alert-danger'>Email/Numéro ou mot de passe incorrect!</div>";
         }
     }
     else{
