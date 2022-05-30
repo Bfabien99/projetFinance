@@ -6,19 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <title>Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+        body{
+            background-color: #0d0c45;
+            color: white;
+            font-family: 'Playfair Display', Poppins, serif;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            padding: 10px;
+        }
+
+        .title{
+            font-size: 72px;
+            text-align: center;
+            padding: 1em;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .link{
+            display: flex;
+            width: 300px;
+            justify-content: space-between;
+            align-self: flex-end;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: white;
+            padding: 5px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .login{
+            transition: all 0.2s;
+            background-image: linear-gradient(to right, #f95530, #eb4841, #d93f4d, #c53a56, #af385b);
+        }
+
+        .login:hover{
+            transition: all 0.2s;
+            background-image: linear-gradient(to left, #f95530, #eb4841, #d93f4d, #c53a56, #af385b);
+        }
+
+        .signup{
+            background-image: linear-gradient(to right, #af385b, #922960, #702162, #4a1d5f, #1b1a57);
+        }
+
+        .signup:hover{
+            background-image: linear-gradient(to left, #af385b, #922960, #702162, #4a1d5f, #1b1a57);
+        }
+    </style>
 </head>
 <body>
-    <h1>X-BANK</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas eos eligendi vel, incidunt nesciunt deserunt itaque sunt nostrum voluptatem minima maiores sit soluta corporis maxime qui aliquid. Quod, dolorum.
-    Qui odit aspernatur et commodi, asperiores sint porro illo nihil non hic totam nobis quod dolor praesentium impedit aliquid blanditiis! Ipsam voluptatibus pariatur necessitatibus laboriosam facere asperiores, distinctio cumque nostrum!
-    Tempora dolore rerum aspernatur ipsa eligendi vel. Voluptas harum illum doloremque obcaecati illo iste suscipit sint et modi? Consectetur aliquam ipsa quibusdam officia. Maxime voluptatum sequi deleniti, vitae voluptates beatae?
-    Laudantium ad impedit reprehenderit, iste, recusandae sunt minima eos, a culpa perferendis quisquam alias voluptates praesentium ducimus aliquam repudiandae officiis temporibus rem dignissimos. Nulla sed libero harum deleniti maiores molestiae?
-    Officiis, numquam ad accusamus nemo exercitationem repudiandae quis at excepturi perferendis atque odio ex aliquam quia enim facere magnam aperiam saepe, eius soluta ab sed aut voluptates illo non. Delectus.
-    Soluta et, praesentium totam asperiores, fugit laborum illum id obcaecati repudiandae beatae non sapiente suscipit necessitatibus quisquam? Veritatis illo aperiam quia necessitatibus neque labore. Culpa illo dolores laborum adipisci ipsum!
-    Consequatur mollitia deserunt beatae harum minima, ducimus, eum delectus molestiae soluta dolor eos doloremque quia maxime exercitationem voluptatem sequi sunt! Asperiores ipsum blanditiis debitis modi recusandae! Sequi maxime tempore inventore?
-    Nobis aliquid obcaecati tempore consectetur illum? Molestias dolorem error quod tempore quam necessitatibus tempora fugit sit vero a excepturi vitae aliquam dicta, quia, nobis mollitia unde soluta amet, cupiditate quaerat.
-    Modi, unde fugiat est numquam, debitis perferendis possimus iste labore maiores dignissimos aperiam excepturi quod iusto nostrum minima harum fugit. Neque asperiores sint beatae corporis excepturi iusto animi aspernatur ullam.
-    Ex, ab cum! Tempore, nemo nisi quam sint dicta in officiis porro illo nihil! Amet, aperiam! Accusamus blanditiis facere esse vitae maxime itaque, quis eveniet in voluptatibus, iusto illo cum?</p>
-    <a href="login">Login</a><a href="inscription">Ouvrir un compte</a>
+    <div class="container">
+    <div class="link">
+         <a href="login" class="login">Se Connecter</a><a href="inscription" class="signup">Ouvrir un compte</a>
+    </div>
+    <h1 class="title">X-BANK</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas eos eligendi vel, incidunt nesciunt deserunt itaque sunt nostrum voluptatem minima maiores sit soluta corporis maxime qui aliquid. Quod, dolorum.</p>
+    </div>
+   
 </body>
 </html>
