@@ -15,6 +15,7 @@
             background-image: linear-gradient(to bottom, #845ec2, #8051cd, #7b42d7, #7630e1, #7012eb);
             color: white;
             font-family: Poppins,'Playfair Display',  serif;
+            min-height: 100vh;
         }
 
         .container{
@@ -46,8 +47,9 @@
         }
 
         .entete h1{
-            color: red;
+            color: tomato;
             text-align: center;
+            text-shadow: 0px 0px 2px #444;
         }
 
         form .group{

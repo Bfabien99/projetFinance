@@ -22,6 +22,7 @@
             gap: 2em;
             padding: 10px;
             align-items: center;
+            min-height: 100vh;
         }
 
         .title{
@@ -43,11 +44,11 @@
             box-shadow: 0px 0px 1px #e00d72;
             padding: 15px;
             border-radius: 5px;
-            color: #444;
+            color: #fff;
         }
 
         form h1{
-            color: red;
+            color: tomato;
         }
 
         form .group{
