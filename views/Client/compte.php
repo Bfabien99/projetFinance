@@ -7,8 +7,8 @@
 
   <div class="soldes">
     <div class="solde alert alert-warning">
-      <h3>Solde Actuel</h3>
-      <p class="argent"><?= number_format($customer['solde'],'2',',','.');?> fcfa</p>
+      <h3>Solde ACTUEL</h3>
+      <p class="current argent"><?= number_format($customer['solde'],'2',',','.');?> fcfa</p>
     </div>
 
     <div class="solde alert alert-success">
@@ -27,11 +27,11 @@
 
   <div class="info">
     <h3>Informations Personnelles</h3>
-    <div class="box d-flex"><h2>Nom</h2><p><?=$customer['nom']?></p></div>
-    <div class="box d-flex"><h2>Prénoms</h2><p><?=$customer['prenoms']?></p></div>
-    <div class="box d-flex"><h2>Contact</h2><p><?=$customer['contact']?></p></div>
-    <div class="box d-flex"><h2>Email</h2><p><?=$customer['email']?></p></div>
-    <div class="box d-flex"><h2>Créer le</h2><p><?=date("d-m-Y à G:i",strtotime($customer['date_creation']))?></p></div>
+    <div class="box"><h2>Nom</h2><p><?=mb_strtoupper($customer['nom'])?></p></div>
+    <div class="box"><h2>Prénoms</h2><p><?=mb_strtoupper($customer['prenoms'])?></p></div>
+    <div class="box"><h2>Contact</h2><p><?=$customer['contact']?></p></div>
+    <div class="box"><h2>Email</h2><p><?=mb_strtolower($customer['email'])?></p></div>
+    <div class="box"><h2>Ouvert le</h2><p><?=date("d-m-Y à G:i",strtotime($customer['date_creation']))?></p></div>
     <a href="delete" id="delete">Fermer Le compte</a>
   </div>
 
@@ -93,8 +93,10 @@
   var options = {
       
         legend: {position: 'top', maxLines: 3},
-        title: 'Transaction Effectuée (en Fcfa)',
+        title: 'Dix dernières transactions éffectuées (en Fcfa)',
         subtitle: 'Depot, Retrait',
+       'width': 800,
+       'height': 500
     };
 
 

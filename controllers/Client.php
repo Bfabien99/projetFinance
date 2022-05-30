@@ -102,7 +102,7 @@
             }
 
             // Pour avoir l'historique
-            $historiques = $client->getHistorical($id,20);
+            $historiques = $client->getHistorical($id,10);
             $bilans = [];
             foreach ($historiques as $value) {
                 $bilans [] = ["somme" => $value['somme'],"date" => date("d-m-Y G:i",strtotime($value['date'])),"type" => $value["type"]] ;

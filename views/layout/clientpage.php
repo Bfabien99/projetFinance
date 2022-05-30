@@ -112,6 +112,12 @@
         }
 
         /* Index Page */
+        .welcome{
+            text-transform: uppercase;
+            color: #e9005f;
+            font-weight: 200;
+        }
+
         .solde h3{
             font-size: 1.3em;
             font-weight: 400;
@@ -121,6 +127,12 @@
         .solde .argent{
             font-size: 36px;
             font-weight: 600;
+        }
+
+        .solde .current{
+            font-size: 46px;
+            color: #e9005f;
+            text-shadow: 0px 0px 5px #B5B5B5;
         }
         /** fin **/
 
@@ -193,6 +205,10 @@
             color: #ee0049;
         }
 
+        .title{
+            color: #ee0049 !important;
+        }
+
         /* Compte page */
         #compte{
             display: flex;
@@ -204,11 +220,42 @@
             width: 100%;
         }
 
+        #compte .info{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        #compte .info h3{
+            color: #e00d72;
+            text-decoration: underline;
+        }
+
+        #compte .info .box{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #compte .info .box h2{
+            color: #e9005f;
+            font-weight: 200;
+            text-decoration: underline;
+        }
+
+        #compte .info .box p{
+            font-size: 1.1em;
+            margin: auto 0;
+        }
+
         #compte .graph{
             width: 100%;
             height: 300px;
             text-align: center;
             margin: 5px;
+            overflow-x: auto;
+            box-shadow: 0px 0px 1px #a1a1a1;
         }
 
         /** fin **/
@@ -227,6 +274,13 @@
                 flex-direction: row;
                 justify-content: space-around;
                 min-width: 900px;
+            }
+        }
+
+        @media screen and (max-width : 1100px){
+            #compte .info .box{
+                display: flex;
+                flex-direction: column;
             }
         }
     </style>

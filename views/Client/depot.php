@@ -1,5 +1,8 @@
+<div class="bloc">
+      <h2 class="title">TRANSACTION</h2>
+  </div>
 <form action="" method="post" id="form">
-    <h1>FAIRE UN DEPOT</h1>
+    <h1 class="title">FAIRE UN DEPOT</h1>
     <div id="msg"></div>
     <div class="group">
         <label for="label">Montant à déposer</label>

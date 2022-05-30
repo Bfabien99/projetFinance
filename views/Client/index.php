@@ -1,9 +1,12 @@
 <section id="index">
     <div class="top">
-    <h3>Bienvenue à vous <?= $datas['nom'] . " " . $datas['prenoms'] ;?></h3>
+        <h3 class="welcome">Bienvenue à vous <?= $datas['nom'] . " " . $datas['prenoms'] ;?></h3>
+
+        <div class="line"></div>
+
         <div class="solde alert alert-warning">
             <h3>SOLDE</h3>
-            <p class="argent"><?= number_format($datas['solde'],'2',',','.');?> fcfa</p>
+            <p class="argent current"><?= number_format($datas['solde'],'2',',','.');?> fcfa</p>
         </div>
         <div class="solde alert alert-success">
             <h3>DEPOT TOTAL</h3>
@@ -22,15 +25,15 @@
             <hr>
             <?php foreach ($historiques as $historique):?>
                     <?php if($historique['type'] == 'depot'):?>
-                        <div class="alert alert-success">
-                            <h2>Dépôt</h2>
-                            <p class="dsomme"><?= number_format($historique['somme'],'2',',','.');?> fcfa</p>
+                        <div class="solde alert alert-success">
+                            <h3>Dépôt</h3>
+                            <p class="argent dsomme"><?= number_format($historique['somme'],'2',',','.');?> fcfa</p>
                             <p class="date"><?= date('l j M Y, à G : i',strtotime($historique['date']));?></p>
                         </div>
                     <?php else:?>
-                        <div class="alert alert-info">
-                            <h2>Retrait</h2>
-                            <p class="rsomme"><?= number_format($historique['somme'],'2',',','.');?> fcfa</p>
+                        <div class="solde alert alert-info">
+                            <h3>Retrait</h3>
+                            <p class="argent rsomme"><?= number_format($historique['somme'],'2',',','.');?> fcfa</p>
                             <p class="date"><?= date('l j M Y, à G : i',strtotime($historique['date']));?></p>
                         </div>
                     <?php endif;?>

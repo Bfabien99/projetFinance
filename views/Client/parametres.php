@@ -2,45 +2,68 @@
     <div class="bloc">
         <h2 class="title">SECURITE</h2>
     </div>
+
+    <div class="line"></div>
+
     <?php if(!empty($datas)):?>
         <div class="first">
+
             <h3>Modifier mes informations</h3>
+
             <form action="" method="post" id="form">
+
             <div id="msg"></div>
+
                 <div class="group">
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" id="nom" value="<?= $datas['nom']?>">
                 </div>
+
                 <div class="group">
                     <label for="prenoms">Prenoms</label>
                     <input type="text" name="prenoms" id="prenoms" value="<?= $datas['prenoms']?>">
                 </div>
+
                 <div class="group">
                     <label for="contact">Contact</label>
                     <input type="text" name="contact" id="contact" value="<?= $datas['contact']?>">
                 </div>
+
                 <div class="group">
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email" value="<?= $datas['email']?>">
                 </div>
+
                 <button type="submit" id="submit">Modifier</button>
+
             </form>
+
         </div>
 
+        <div class="line"></div>
+
         <div class="second">
+
             <h3>Modifier mon Mot de passe</h3>
+
             <form action="" method="post" id="passform">
+
                 <div id="pmsg"></div>
+
                 <div class="group">
                     <label for="password">Nouveau mot de passe <span class="red">*</span></label>
                     <input type="password" name="password" required id="password">
                 </div>
+
                 <div class="group">
                     <label for="password">Confirmer le mot de passe <span class="red">*</span></label>
                     <input type="password" name="cpassword" required id="cpassword">
                 </div>
+
                 <button type="submit" id="submit">Modifier</button>
+
             </form>
+
         </div>
     <?php endif; ?>
 </div>

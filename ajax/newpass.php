@@ -23,5 +23,5 @@
         }
     }
     else{
-        echo "<div class='alert alert-danger'>Veuillez remplir tous les champs</div>";
+        echo "<div class='alert alert-danger'>Veuillez remplir tous les champs/Renseigner l'Email</div>";
     }

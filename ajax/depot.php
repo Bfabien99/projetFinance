@@ -30,7 +30,7 @@
                         echo "<div class='alert alert-success'>Dépôt effectué avec succès</div>";
                         echo "<div class='alert alert-info'>Nouveau solde: ".($solde)." fcfa</div>";
 
-                        $message = "Vous venez de faire un dépôt de <strong>$montant fcfa</strong> sur votre compte.";
+                        $message = "Vous venez de faire un dépôt de <strong>$montant fcfa</strong> sur votre compte. Votre solde actuel est de <strong> $solde fcfa </strong>. <br> <h3>XBANK vous remercie!</h3>";
                         
                         if(sendMail('XBANK - Transaction éffectuée',$message,$customer['email'])){
                             echo "<div class='alert alert-warning'> Un mail vous a été adressé</div>";

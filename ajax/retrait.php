@@ -31,7 +31,7 @@
                             echo "<div class='alert alert-success'>Retrait effectué avec succès</div>";
                             echo "<div class='alert alert-info'>Nouveau solde: ".($solde - ($montant))." fcfa</div>";
 
-                            $message = "Vous venez de faire un retrait de <strong>$montant fcfa</strong> sur votre compte.";
+                            $message = "Vous venez de faire un retrait de <strong>$montant fcfa</strong> sur votre compte.  Votre solde actuel est de <strong> ".($solde - $montant)." fcfa </strong>. <br> <h3>XBANK vous remercie!</h3>";
 
                             if(sendMail('XBANK - Transaction éffectuée',$message,$customer['email'])){
                                 echo "<div class='alert alert-warning'> Un mail vous a été adressé</div>";
