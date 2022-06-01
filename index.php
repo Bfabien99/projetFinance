@@ -150,6 +150,27 @@ $router->map('GET',"/projetFinance/admin/logout",function(){
     header('location:/projetFinance/login');
 });
 
+$router->map('GET',"/projetFinance/admin/liste",function(){
+    if (!empty($_SESSION['xbank_id'])) {
+        $admin = new Admin();
+        $admin->getClients();
+    }
+    else {
+        header('location:/projetFinance/login');
+    }
+});
+
+$router->map('GET',"/projetFinance/admin/liste/[i:id]",function($id){
+    if (!empty($_SESSION['xbank_id'])) {
+        $admin = new Admin();
+        echo $id;
+    }
+    else {
+        header('location:/projetFinance/login');
+    }
+});
+
+
 
 $match = $router->match();
 

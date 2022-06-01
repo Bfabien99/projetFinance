@@ -60,7 +60,7 @@
             }
         }
 
-        public function allClient(){
+        public function AllClient(){
             $connect = $this->getConnexion();
             $query = "SELECT * FROM clients";
             $stmt = $connect->prepare($query);
@@ -82,6 +82,78 @@
             
             if ($delete) {
                 return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function searchclient($text){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM clients WHERE nom LIKE '".'%'.$this->inputClean($text).'%'."' OR prenoms LIKE '".'%'.$this->inputClean($text).'%'."'";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $search = $stmt->fetchAll();
+            if ($search) {
+                return $search;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function AllSolde(){
+            $connect = $this->getConnexion();
+            $query = "SELECT solde FROM clients WHERE enable = 1";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $solde = $stmt->fetchAll();
+            if ($solde) {
+                return $solde;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function AllDeposite(){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM depot";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $solde = $stmt->fetchAll();
+            if ($solde) {
+                return $solde;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function AllWithdraw(){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM retrait";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $solde = $stmt->fetchAll();
+            if ($solde) {
+                return $solde;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        public function Allhistorical(){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM clients INNER JOIN historiques ON historiques.client_id = clients.id ORDER BY historiques.date";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $historical = $stmt->fetchAll();
+
+            if ($historical) {
+                return $historical;
             }
             else{
                 return false;

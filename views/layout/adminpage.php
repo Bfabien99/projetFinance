@@ -39,7 +39,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: tomato;
+            color: white;
             border: 1px solid #ee0049;
         }
 
@@ -71,7 +71,7 @@
 
         .navigation li a{
             text-decoration: none;
-            color: #555;
+            color: #eee;
             text-shadow: 0px 0px 5px #999;
         }
 
@@ -114,10 +114,10 @@
         <h2>Admin</h2>
         <img src="https://via.placeholder.com/150" alt="" width="50px" height="50px" style="border-radius:50%;">
         <ul>
-            <li><i class="bi bi-speedometer2"></i><a href="">Dashboard</a></li>
-            <li><i class="bi bi-people"></i><a href="">Liste des clients</a></li>
-            <li><i class="bi bi-clock-history"></i><a href="">Historique</a></li>
-            <li><i class="bi bi-gear"></i><a href="">Paramètres</a></li>
+            <li><i class="bi bi-speedometer2"></i><a href="/projetFinance/admin">Dashboard</a></li>
+            <li><i class="bi bi-people"></i><a href="/projetFinance/admin/liste">Liste des clients</a></li>
+            <li><i class="bi bi-clock-history"></i><a href="/projetFinance/admin/historique">Historique</a></li>
+            <li><i class="bi bi-gear"></i><a href="/projetFinance/admin/parametres">Paramètres</a></li>
             <li><i class="bi bi-box-arrow-left"></i><a href="" class="disconnect">Déconnexion</a></li>
         </ul>
     </div>
@@ -127,13 +127,13 @@
     </div>
 </body>
 <script>
-    setInterval(function(){
-        window.location.reload();
-    },3000)
+    // setInterval(function(){
+    //     window.location.reload();
+    // },3000)
 
         let deconnect = document.querySelector('.disconnect');
 
-        deconnect.addEventListener('click', function(e){
+        deconnect.addEventListener('click', function(){
             e.preventDefault();
             if (confirm("Voulez-vous vraiment vous deconnecter ?") == true) {
                 window.location.href = "/projetFinance/admin/logout";
