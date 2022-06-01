@@ -181,6 +181,17 @@ $router->map('GET',"/projetFinance/admin/historique",function(){
 });
 
 
+$router->map('GET',"/projetFinance/admin/parametres",function(){
+    if (!empty($_SESSION['xbank_id'])) {
+        $admin = new Admin();
+        $admin->getAdmin($_SESSION['xbank_id']);
+    }
+    else {
+        header('location:/projetFinance/login');
+    }
+});
+
+
 
 $match = $router->match();
 

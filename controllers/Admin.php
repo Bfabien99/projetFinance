@@ -49,6 +49,16 @@
             }
         }
 
+        public function getAdmin($id){
+            $model = new Admindb;
+            $datas = $model->admin($id);
+            
+            if ($datas) {
+                //var_dump($historique);
+                $this->render('parametres',compact("datas"));
+            }
+        }
+
         public function getHistoric(){
             $model = new Admindb;
             $historiques = $model->Allhistorical();

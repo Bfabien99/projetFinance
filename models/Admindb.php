@@ -60,6 +60,70 @@
             }
         }
 
+        public function admin($id){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM admin";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $admin = $stmt->fetch();
+            if ($admin) {
+                return $admin;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function updateInfo($id,$nom, $prenoms, $contact, $email)
+        {
+            $connect = $this->getConnexion();
+
+            $query = $connect->prepare("UPDATE admin SET nom=:nom, prenoms=:prenoms, contact=:contact, email=:email WHERE id=$id");
+
+            $insert = $query->execute(
+                [
+                    "nom" => $this->inputClean($nom),
+                    "prenoms" => $this->inputClean($prenoms),
+                    "contact" => $this->contactFormat($contact),
+                    "email" => $this->inputClean($email)
+                ]
+            );
+
+            if($insert)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            } 
+            
+        }
+
+        // Reinitialiser le mot de passe
+        public function changePass($email, $password)
+        {
+            $connect = $this->getConnexion();
+
+            $query = $connect->prepare("UPDATE admin SET password=:password WHERE email=:email");
+
+            $insert = $query->execute(
+                [
+                    "password" => $this->encryptpass($password),
+                    "email" => $this->inputClean($email)
+                ]
+            );
+            
+            if($insert)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public function AllClient(){
             $connect = $this->getConnexion();
             $query = "SELECT * FROM clients";
