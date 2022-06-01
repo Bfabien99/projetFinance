@@ -1,4 +1,8 @@
 <div id="historiques">
+<div class="bloc">
+        <h2 class="title">HISTORIQUE</h2>
+    </div>
+    <div class="line"></div>
     <?php if(!empty($historiques)):?>
         <h3>Transaction Totale : <?= count($historiques)?></h3>
         <?php foreach ($historiques as $historique):?>

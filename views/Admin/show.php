@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-
+        <div class="line"></div>
         <div class="historiques">
             <?php if(!empty($historiques)):?>
                 <h3><?= count($historiques)?> Dernières Transactions</h3>

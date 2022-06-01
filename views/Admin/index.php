@@ -15,8 +15,11 @@
             </div>
         </div>
     </div>
+    <div class="line"></div>
     <div class="historique">
-        <h3>Historique des Transactions</h3>
+        <div class="bloc">
+            <h2 class="title">Historiques</h2>
+        </div>
         <div id="chart_div"></div>
     </div>
 </div>

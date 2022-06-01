@@ -108,6 +108,66 @@
             min-width: 200px;
         }
 
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            margin:auto;
+            align-items: center;
+            padding: 10px;
+            gap: 1em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 1px #e00d72;
+        }
+
+        form .group{
+            align-items: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form .group input{
+            transition: all 0.2s;
+            outline: none;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #e00d72;
+        }
+
+        form .group input:focus{
+            border: 1px solid #ee1212;
+        }
+
+        .box{
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .line{
+            width: 200px;
+            height: 2px;
+            background-color: #e9005f;
+            margin: 0 auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .bloc{
+            width: 100%;
+            text-align: center;
+            color: #ee0049;
+        }
+
+        .title{
+            color: #ee0049 !important;
+        }
+
         #liste{
             width: 100%;
             display: flex;
@@ -132,6 +192,48 @@
 
         #liste table tbody tr:nth-child(odd){
             background-color: #ccc;
+        }
+
+        #show{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 1em;
+            align-items: center;
+        }
+
+        #show div{
+            width: 100%;
+        }
+
+        #show #info{
+            max-width: 500px;
+        }
+
+        /* Params page */
+        #params{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1em;
+        }
+        /** fin **/
+        @media screen and (min-width : 1120px){
+            #index{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 900px;
+                padding: 5px;
+                gap: 1em;
+            }
+        }
+
+        @media screen and (max-width : 1100px){
+            .box{
+                display: flex;
+                flex-direction: column;
+            }
         }
     </style>
 </head>

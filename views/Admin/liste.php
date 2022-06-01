@@ -1,8 +1,12 @@
 <div id="liste">
-<h2>Liste des clients</h2>
+<div class="bloc">
+        <h2 class="title">LISTE DES CLIENTS</h2>
+    </div>
+<div class="line"></div>
 <form action="" method="post">
-    <input type="search" name="search" id="search">
-    <button type="submit" id="submit">Reload</button>
+    <div class="group"><input type="search" name="search" id="search" placeholder="rechercher un client">
+    <button type="submit" id="submit">Reload</button></div>
+    
 </form>
 <?php if(!empty($clients)):?>
     <table>
