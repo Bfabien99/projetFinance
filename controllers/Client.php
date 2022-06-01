@@ -87,26 +87,36 @@
 
            // Pour avoir le dépot total
             $depotTotal = 0;
-            if ($depotLength) {
-                foreach ($depotLength as $depot) {
-                    $depotTotal+= $depot["somme"];
+            if(!empty($depotLength)){
+                if ($depotLength) {
+                    foreach ($depotLength as $depot) {
+                        $depotTotal+= $depot["somme"];
+                    }
                 }
             }
             
+            
             // Pour avoir le retrait total
             $retraitTotal = 0;
-            if($retraitLength){
-                foreach ($retraitLength as $retrait) {
-                    $retraitTotal+= $retrait["somme"];
+            if(!empty($retraitLength)){
+                if($retraitLength){
+                    foreach ($retraitLength as $retrait) {
+                        $retraitTotal+= $retrait["somme"];
+                    }
                 }
             }
+            
 
             // Pour avoir l'historique
             $historiques = $client->getHistorical($id,10);
             $bilans = [];
-            foreach ($historiques as $value) {
-                $bilans [] = ["somme" => $value['somme'],"date" => date("d-m-Y G:i",strtotime($value['date'])),"type" => $value["type"]] ;
+
+            if ($historiques) {
+                foreach ($historiques as $value) {
+                    $bilans [] = ["somme" => $value['somme'],"date" => date("d-m-Y G:i",strtotime($value['date'])),"type" => $value["type"]] ;
+                }
             }
+            
 
             $this->render('compte',compact("depotLength","retraitLength","bilans","depotTotal","retraitTotal","customer"));
         }
@@ -120,6 +130,9 @@
             if ($historiques) {
                     $this->render('historique',compact("historiques"),$message);
                 }
+            else{
+                $this->render('historique');
+            }
         }
 
         // Page Depot

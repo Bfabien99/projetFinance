@@ -10,7 +10,7 @@
             <tr>
                 <td>Nom</td>
                 <td>Prenoms</td>
-                <td>Solde</td>
+                <td>Solde (Fcfa)</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -58,7 +58,7 @@
                                         <tr>
                                             <td>${datas.nom}</td>
                                             <td>${datas.prenoms}</td>
-                                            <td>${datas.solde}</td>
+                                            <td>${(datas.solde)}</td>
                                             <td><a href='/projetFinance/admin/liste/${datas.id}'>voir</a></td>
                                         </tr>
                                     `)

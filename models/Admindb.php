@@ -116,6 +116,20 @@
             }
         }
 
+        public function ClientInfo($id){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM clients WHERE id = $id";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $client = $stmt->fetch();
+            if ($client) {
+                return $client;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function AllDeposite(){
             $connect = $this->getConnexion();
             $query = "SELECT * FROM depot";
@@ -124,6 +138,20 @@
             $solde = $stmt->fetchAll();
             if ($solde) {
                 return $solde;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function ClientDepot($id){
+            $connect = $this->getConnexion();
+            $query = "SELECT somme FROM depot WHERE client_id = $id";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $depot = $stmt->fetchAll();
+            if ($depot) {
+                return $depot;
             }
             else{
                 return false;
@@ -144,6 +172,21 @@
             }
         }
 
+        // Pour obtenir le retrait toal du client
+        public function ClientWithdraw($id){
+            $connect = $this->getConnexion();
+            $query = "SELECT somme FROM retrait WHERE client_id = $id";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $retrait = $stmt->fetchAll();
+            if ($retrait) {
+                return $retrait;
+            }
+            else{
+                return false;
+            }
+        }
+
 
         public function Allhistorical(){
             $connect = $this->getConnexion();
@@ -152,6 +195,21 @@
             $stmt->execute();
             $historical = $stmt->fetchAll();
 
+            if ($historical) {
+                return $historical;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function ClientHistorical($id,$limit){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM clients INNER JOIN historiques ON historiques.client_id = clients.id WHERE historiques.client_id = $id  ORDER BY historiques.date DESC LIMIT  $limit";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $historical = $stmt->fetchAll();
+            
             if ($historical) {
                 return $historical;
             }

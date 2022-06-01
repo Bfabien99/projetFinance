@@ -163,7 +163,17 @@ $router->map('GET',"/projetFinance/admin/liste",function(){
 $router->map('GET',"/projetFinance/admin/liste/[i:id]",function($id){
     if (!empty($_SESSION['xbank_id'])) {
         $admin = new Admin();
-        echo $id;
+        $admin->getClientsInfo($id);
+    }
+    else {
+        header('location:/projetFinance/login');
+    }
+});
+
+$router->map('GET',"/projetFinance/admin/historique",function(){
+    if (!empty($_SESSION['xbank_id'])) {
+        $admin = new Admin();
+        $admin->getHistoric();
     }
     else {
         header('location:/projetFinance/login');

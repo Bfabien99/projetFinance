@@ -38,12 +38,16 @@
   <div class="line"></div>
 
   <!--Div that will hold the pie chart-->
+  <?php if($bilans):?>
   <div class="graph" id="bilangraph"></div>
   <div class="graph" id="bandeDiagram"></div>
+  <?php endif;?>
 
 </section>
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<?php if($bilans):?>
 <script type="text/javascript">
   var d = <?= !empty($depotLength) ? count($depotLength):0 ?>;
   var r = <?= !empty($retraitLength) ? count($retraitLength):0 ?>;
@@ -112,3 +116,4 @@
           };
       });
 </script>
+<?php endif;?>

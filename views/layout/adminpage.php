@@ -107,6 +107,32 @@
             padding: 5px;
             min-width: 200px;
         }
+
+        #liste{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            gap: 1em;
+        }
+
+        #liste table{
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        #liste table tr{
+            text-align: center;
+        }
+
+        #liste table tr td{
+            padding: 5px;
+        }
+
+        #liste table tbody tr:nth-child(odd){
+            background-color: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -133,7 +159,7 @@
 
         let deconnect = document.querySelector('.disconnect');
 
-        deconnect.addEventListener('click', function(){
+        deconnect.addEventListener('click', function(e){
             e.preventDefault();
             if (confirm("Voulez-vous vraiment vous deconnecter ?") == true) {
                 window.location.href = "/projetFinance/admin/logout";

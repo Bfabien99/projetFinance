@@ -20,5 +20,7 @@
                     </div>
                 <?php endif;?>
         <?php endforeach;?>
+    <?php else:?>
+        <h3>Aucune transaction effectuée</h3>
     <?php endif;?>
 </div>

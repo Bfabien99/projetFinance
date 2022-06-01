@@ -51,15 +51,38 @@
 
         public function getHistoric(){
             $model = new Admindb;
-            $historique = $model->Allhistorical();
+            $historiques = $model->Allhistorical();
             
-            if ($historique) {
+            if ($historiques) {
                 //var_dump($historique);
-                $this->render('historique',compact("historique"));
+                $this->render('historique',compact("historiques"));
             }
-            else {
-                $message = "Aucune transaction effectuée";
-                $this->render('historique',[],$message);
+        }
+
+        public function getClientsInfo($id){
+            $model = new Admindb;
+            $historiques = $model->ClientHistorical($id,10);
+            $depot = $model->ClientDepot($id);
+            $dTotal = 0;
+            if($depot){
+                foreach ($depot as $solde) {
+                    $dTotal += $solde['somme'];
+                }
+            }
+            
+            $retrait = $model->ClientWithdraw($id);
+            $rTotal = 0;
+            if($retrait){
+                foreach ($retrait as $solde) {
+                    $rTotal += $solde['somme'];
+                }
+            }
+            $client = $model->ClientInfo($id);
+            if($client){
+                $this->render('show',compact("historiques","dTotal","rTotal","client"));
+            }
+            else{
+                $this->render('show');
             }
         }
 
