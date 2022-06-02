@@ -14,6 +14,13 @@
 
             <div id="msg"></div>
 
+                <img src="" alt="profile" width="100px" style="border:1px solid;border-radius: 50%;" height="100px">
+
+                <div class="group">
+                    <label for="upload">Modifier Image</label>
+                    <input type="file" name="file" id="file">
+                </div>
+
                 <div class="group">
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" id="nom" value="<?= $datas['nom']?>">
