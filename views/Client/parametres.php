@@ -84,11 +84,21 @@
             var prenoms = $('#prenoms').val();
             var contact = $('#contact').val();
             var email = $('#email').val();
+            var file_data = $('#file').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('nom',nom)
+            form_data.append('prenoms',prenoms)
+            form_data.append('contact',contact)
+            form_data.append('email',email)
+            form_data.append('file',file_data);
 
             $.ajax({
                     url: '../ajax/updateinfo.php',
                     type: 'POST',
-                    data: {nom: nom, prenoms: prenoms, contact: contact, email: email},
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    data: form_data,
                     success: function(data)
                     {
                         if(data){
