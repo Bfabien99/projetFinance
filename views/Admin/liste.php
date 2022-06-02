@@ -12,6 +12,7 @@
     <table>
         <thead>
             <tr>
+                <td>Photo</td>
                 <td>Nom</td>
                 <td>Prenoms</td>
                 <td>Solde (Fcfa)</td>
@@ -22,6 +23,7 @@
         <tbody id="tbody">
             <?php foreach($clients as $client):?>
                 <tr>
+                    <td><img src="/projetFinance/uploads/user/<?=$client['profil_pic']?>" width="100%" style="border-radius:50%" alt="" class="pic"></td>
                     <td><?= ucfirst($client["nom"])?></td>
                     <td><?= ucwords($client["prenoms"])?></td>
                     <td><?= $client["solde"]?></td>
@@ -60,6 +62,7 @@
                                     console.log(datas)
                                     $('#tbody').append(`
                                         <tr>
+                                            <td><img src="/projetFinance/uploads/user/${datas.profil_pic}" width="100%" style="border-radius:50%" alt="" class="pic2"></td>
                                             <td>${datas.nom}</td>
                                             <td>${datas.prenoms}</td>
                                             <td>${(datas.solde)}</td>

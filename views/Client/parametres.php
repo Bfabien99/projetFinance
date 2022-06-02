@@ -14,7 +14,7 @@
 
             <div id="msg"></div>
 
-                <img src="/projetFinance/uploads/user/<?=$datas['profil_pic']?>" alt="profile" width="100px" style="border:1px solid;border-radius: 50%;" height="100px">
+                <img src="/projetFinance/uploads/user/<?=$datas['profil_pic']?>" id="pic" alt="profile" width="100px" style="border:1px solid;border-radius: 50%;" height="100px">
 
                 <div class="group">
                     <label for="upload">Modifier Image</label>
@@ -105,7 +105,7 @@
                         if(data){
                             $('#msg').html(data)
                             setTimeout(function() {
-                                $('#msg').html("");
+                                $('#msg').html('')
                             },5000)
                         }
                     }
