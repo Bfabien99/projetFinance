@@ -155,18 +155,19 @@
         }
 
         // Modifier information client
-        public function updateInfoClient($id,$nom, $prenoms, $contact, $email)
+        public function updateInfoClient($id,$nom, $prenoms, $contact, $email, $picture)
         {
             $connect = $this->getConnexion();
 
-            $query = $connect->prepare("UPDATE clients SET nom=:nom, prenoms=:prenoms, contact=:contact, email=:email WHERE id=$id");
+            $query = $connect->prepare("UPDATE clients SET nom=:nom, prenoms=:prenoms, contact=:contact, email=:email, profil_pic=:profil_pic WHERE id=$id");
 
             $insert = $query->execute(
                 [
                     "nom" => $this->inputClean($nom),
                     "prenoms" => $this->inputClean($prenoms),
                     "contact" => $this->contactFormat($contact),
-                    "email" => $this->inputClean($email)
+                    "email" => $this->inputClean($email),
+                    "profil_pic" => strip_tags($picture)
                 ]
             );
 

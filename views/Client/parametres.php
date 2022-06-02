@@ -14,7 +14,7 @@
 
             <div id="msg"></div>
 
-                <img src="" alt="profile" width="100px" style="border:1px solid;border-radius: 50%;" height="100px">
+                <img src="/projetFinance/uploads/user/<?=$datas['profil_pic']?>" alt="profile" width="100px" style="border:1px solid;border-radius: 50%;" height="100px">
 
                 <div class="group">
                     <label for="upload">Modifier Image</label>
@@ -85,6 +85,7 @@
             var contact = $('#contact').val();
             var email = $('#email').val();
             var file_data = $('#file').prop('files')[0];
+
             var form_data = new FormData();
             form_data.append('nom',nom)
             form_data.append('prenoms',prenoms)
