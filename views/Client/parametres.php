@@ -77,12 +77,20 @@
 <script>
     $(document).ready(function(){
 
+        $('input').on('keydown',function(){
+            $('#msg').html(" ");
+            $('#pmsg').html(" ");
+        })
+
+        console.log($('input'))
+
         $('#file').on('change',function(){
             $('.filebox').html($('#file').prop('files')[0].name)
         })
         // Modifier information
         $('#form').on('submit',function(e){
             e.preventDefault();
+            $('#msg').append("<img src ='/projetFinance/assets/img/loading.gif' width='100%' style='display:flex;margin:0 auto;'/>")
             var nom = $('#nom').val();
             var prenoms = $('#prenoms').val();
             var contact = $('#contact').val();
@@ -126,6 +134,7 @@
         // Modifier mot de passe
         $('#passform').on('submit',function(e){
             e.preventDefault();
+            $('#pmsg').append("<img src ='/projetFinance/assets/img/loading.gif' width='100%' style='display:flex;margin:0 auto;'/>")
             var email = $('#email').val();
             var password = $('#password').val();
             var cpassword = $('#cpassword').val();

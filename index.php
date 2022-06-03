@@ -61,6 +61,7 @@ $router->map('GET',"/projetFinance/confirm/[*:slug]",function($slug){
         include 'views/confirmation.php';
     }
     else {
+        echo $_SESSION['xbank_confirm_mail']." slug = ".$slug;
         die('<div><h1 style="text-align:center;">ERREUR LORS DE LA CONFIRMATION<h1></div>');
     }
 });

@@ -1,6 +1,6 @@
 <div id="index">
     <div class="soldeTotale">
-    <img src="/projetFinance/assets/img/xbank.png" alt="" width="200px" height="200px" style="display:flex;margin:0 auto;">
+      <img src="/projetFinance/assets/img/xbank.png" alt="" width="200px" height="200px" style="display:flex;margin:0 auto;">
         <div class="soldes">
             <div class="alert alert-warning">
                 <h2 class="title">SOLDE</h2>

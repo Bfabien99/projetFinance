@@ -146,6 +146,7 @@
 
         $('#form').on('submit',function(e){
             e.preventDefault();
+            $('#msg').append("<img src ='/projetFinance/assets/img/loading.gif' width='100%' style='display:flex;margin:0 auto;'/>")
             var nom = $('#nom').val();
             var prenoms = $('#prenoms').val();
             var email = $('#email').val();
