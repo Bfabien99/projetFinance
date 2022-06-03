@@ -14,10 +14,10 @@
 
             <div id="msg"></div>
 
-                <img src="/projetFinance/uploads/user/<?=$datas['profil_pic']?>" id="pic" alt="profile" width="100px" style="border:1px solid;border-radius: 50%;" height="100px">
+                <img src="/projetFinance/uploads/user/<?=$datas['profil_pic']?>" class="pic" alt="profile">
 
-                <div class="group">
-                    <label for="upload">Modifier Image</label>
+                <div class="group fileinput">
+                    <span class="filebox">Choisir Image</span>
                     <input type="file" name="file" id="file">
                 </div>
 

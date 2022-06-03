@@ -270,6 +270,35 @@
             align-items: center;
             gap: 1em;
         }
+
+        #params .pic{
+           width: 200px;
+           height: 200px;
+           object-fit: cover;
+           border-radius: 50%;
+        }
+
+        #params .fileinput{
+            position: relative;
+            margin-bottom: 2em;
+        }
+
+        #params .filebox, #params #file{
+            position: absolute;
+            width: 100%;
+            max-width: 200px;
+            overflow: hidden;
+            background-color: #e00d72;
+            color: white;
+            text-align: center;
+            padding: 2px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #params #file{
+            opacity: 0;
+        }
         /** fin **/
         @media screen and (min-width : 1120px){
             #index{
@@ -310,6 +339,9 @@
     </div>
 </body>
 <script>
+    setInterval(function(){
+        window.location.reload()
+    },2000)
     let deconnect = document.querySelector('.disconnect');
 
     deconnect.addEventListener('click', function(e){
