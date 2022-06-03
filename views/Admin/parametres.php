@@ -16,22 +16,22 @@
 
                 <div class="group">
                     <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" value="<?= $datas['nom']?>">
+                    <input required type="text" name="nom" id="nom" value="<?= $datas['nom']?>">
                 </div>
 
                 <div class="group">
                     <label for="prenoms">Prenoms</label>
-                    <input type="text" name="prenoms" id="prenoms" value="<?= $datas['prenoms']?>">
+                    <input required type="text" name="prenoms" id="prenoms" value="<?= $datas['prenoms']?>">
                 </div>
 
                 <div class="group">
                     <label for="contact">Contact</label>
-                    <input type="text" name="contact" id="contact" value="<?= $datas['contact']?>">
+                    <input required type="text" name="contact" id="contact" value="<?= $datas['contact']?>">
                 </div>
 
                 <div class="group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<?= $datas['email']?>">
+                    <input required type="text" name="email" id="email" value="<?= $datas['email']?>">
                 </div>
 
                 <button type="submit" id="submit">Modifier</button>

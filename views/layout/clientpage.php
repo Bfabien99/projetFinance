@@ -276,6 +276,19 @@
            height: 200px;
            object-fit: cover;
            border-radius: 50%;
+           position: relative;
+        }
+
+        #params .reload{
+            display: none;
+            position: absolute;
+            width: 20px;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            left: 15px;
+            background-color: #a1a1a1;
+            cursor: pointer;
         }
 
         #params .fileinput{
@@ -339,9 +352,6 @@
     </div>
 </body>
 <script>
-    setInterval(function(){
-        window.location.reload()
-    },2000)
     let deconnect = document.querySelector('.disconnect');
 
     deconnect.addEventListener('click', function(e){

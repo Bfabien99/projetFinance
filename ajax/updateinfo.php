@@ -15,7 +15,7 @@
         $img = "";
 
         //Chargement de l'image
-        if(!empty($_FILES['file']) || $_FILES['image']['error'] == 0){
+        if(!empty($_FILES['file']) && ($_FILES['file']['error'] == 0)){
 
             if($_FILES['file']['size'] <= 4000000){
                 $fileInfo = pathinfo($_FILES['file']['name']);
@@ -46,7 +46,10 @@
         $update = $clients->updateInfoClient($_SESSION['xbank_client_id'],$_POST['nom'],$_POST['prenoms'],$_POST['contact'],$_POST['email'],$img);
 
         if($update){
-            move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/user/' . $img);
+            if(!empty($_FILES['file']) && ($_FILES['file']['error'] == 0)){
+                move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/user/' . $img);
+            }
+            
             echo "<div class='alert alert-success'>Informations mis à jour</div>";
         }
         else{

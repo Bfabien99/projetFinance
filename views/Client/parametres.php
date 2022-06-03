@@ -15,30 +15,30 @@
             <div id="msg"></div>
 
                 <img src="/projetFinance/uploads/user/<?= !empty($datas['profil_pic']) ?  $datas['profil_pic']:'profilepic.png' ?>" class="pic" alt="profile">
-
                 <div class="group fileinput">
                     <span class="filebox">Choisir Image</span>
+                    <span class="reload">X</span>
                     <input type="file" name="file" id="file">
                 </div>
 
                 <div class="group">
                     <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" value="<?= $datas['nom']?>">
+                    <input required type="text" name="nom" id="nom" value="<?= $datas['nom']?>">
                 </div>
 
                 <div class="group">
                     <label for="prenoms">Prenoms</label>
-                    <input type="text" name="prenoms" id="prenoms" value="<?= $datas['prenoms']?>">
+                    <input required type="text" name="prenoms" id="prenoms" value="<?= $datas['prenoms']?>">
                 </div>
 
                 <div class="group">
                     <label for="contact">Contact</label>
-                    <input type="text" name="contact" id="contact" value="<?= $datas['contact']?>">
+                    <input required type="text" name="contact" id="contact" value="<?= $datas['contact']?>">
                 </div>
 
                 <div class="group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<?= $datas['email']?>">
+                    <input required type="text" name="email" id="email" value="<?= $datas['email']?>">
                 </div>
 
                 <button type="submit" id="submit">Modifier</button>
@@ -77,6 +77,9 @@
 <script>
     $(document).ready(function(){
 
+        $('#file').on('change',function(){
+            $('.filebox').html($('#file').prop('files')[0].name)
+        })
         // Modifier information
         $('#form').on('submit',function(e){
             e.preventDefault();
@@ -85,6 +88,14 @@
             var contact = $('#contact').val();
             var email = $('#email').val();
             var file_data = $('#file').prop('files')[0];
+
+            if(file_data!=null){
+                $('#params .reload').css('display', 'block');
+            }
+
+            $('#params .reload').on('click',function(){
+                window.location.reload();
+            })
 
             var form_data = new FormData();
             form_data.append('nom',nom)
