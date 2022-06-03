@@ -138,6 +138,20 @@
             }
         }
 
+        public function RecentClient($limit){
+            $connect = $this->getConnexion();
+            $query = "SELECT * FROM clients ORDER BY date_creation DESC LIMIT $limit";
+            $stmt = $connect->prepare($query);
+            $stmt->execute();
+            $clients = $stmt->fetchAll();
+            if ($clients) {
+                return $clients;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function removeClient($id){
             $connect = $this->getConnexion();
             $query = "DELETE FROM clients WHERE id = $id";

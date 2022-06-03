@@ -23,7 +23,7 @@
                     <p><?= number_format($dTotal,2,'.',',')?> Fcfa</p>
                 </div>
 
-                <div class="alert alert-success">
+                <div class="alert alert-info">
                     <h2>Retrait Total</h2>
                     <p><?= number_format($rTotal,2,'.',',')?> Fcfa</p>
                 </div>

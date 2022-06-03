@@ -263,19 +263,108 @@
             align-items: center;
             gap: 1em;
         }
+
+        .see{
+            color: white;
+            background-color: #e00d72;
+            padding: 5px;
+        }
         /** fin **/
         @media screen and (min-width : 1120px){
             #index{
                 display: flex;
-                flex-direction: column;
-                justify-content: space-around;
+                flex-direction: row;
+                width: 100%;
                 min-width: 900px;
                 padding: 5px;
                 gap: 1em;
             }
+
+            #index .soldeTotale{
+                height: fit-content;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            #index .historique{
+                width: 70%;
+                overflow: auto;
+                border: 1px solid #e9005f;
+                border-radius: 5px;
+                height: fit-content;
+            }
+
+            #index .pic{
+            width: 100px;
+            }
+
+            #index .users{
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+            }
+
+            #index .users .content{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0px 0px 1px #e00d72;
+                border-radius: 5px;
+                padding: 5px;
+            }
+
+            #index .users .content .left{
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #index .users .content .right *{
+                width: 150px;
+            }
         }
 
-        @media screen and (max-width : 1100px){
+        @media screen and (max-width : 1120px){
+            #index .pic{
+            width: 100px;
+            }
+
+            #index .users{
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                text-align: center;
+                border-bottom: 2px solid #e00d72;
+            }
+
+            #index .users .content{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0px 0px 1px #e00d72;
+                border-radius: 5px;
+                max-width: 500px;
+                margin: 0 auto;
+                margin-bottom: 2em;
+                padding: 5px;
+            }
+
+            #index .users .content .left{
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #index .users .content .right *{
+                width: 150px;
+            }
+
             .box{
                 display: flex;
                 flex-direction: column;
@@ -301,10 +390,6 @@
     </div>
 </body>
 <script>
-    // setInterval(function(){
-    //     window.location.reload();
-    // },3000)
-
         let deconnect = document.querySelector('.disconnect');
 
         deconnect.addEventListener('click', function(e){

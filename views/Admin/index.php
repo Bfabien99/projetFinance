@@ -1,5 +1,6 @@
 <div id="index">
     <div class="soldeTotale">
+    <img src="/projetFinance/assets/img/xbank.png" alt="" width="200px" height="200px" style="display:flex;margin:0 auto;">
         <div class="soldes">
             <div class="alert alert-warning">
                 <h2 class="title">SOLDE</h2>
@@ -14,8 +15,31 @@
                 <h1 class="somme"><?= number_format($rTotal,2,'.',',')." FCFA" ?? 0 ?></h1>
             </div>
         </div>
+        <div class="line"></div>
+        <div class="users">
+          <?php if(!empty($clients)):?>
+            <h4><?=count($clients)?> recents inscrits</h4>
+
+            <?php foreach($clients as $client):?>
+              <div class="content">
+
+                <div class="left">
+                  <img src="/projetFinance/uploads/user/<?=!empty($client['profil_pic']) ? $client['profil_pic']:'profilepic.png' ?>" alt="profilepic" class="pic">
+                  <p><?=$client['nom']." ".$client['prenoms'] ?></p>
+                </div>
+
+                <div class="right">
+                  <div class="bloc"><p>Solde</p><p><strong><?=number_format($client['solde'],2,'.',',')?> fcfa</strong></p> <a href="/projetFinance/admin/liste/<?= $client["id"]?>" class="see">voir</a></div>
+                </div>
+
+              </div>
+            <?php endforeach;?>
+
+          <?php endif?>
+        </div>
+
     </div>
-    <div class="line"></div>
+
     <div class="historique">
         <div class="bloc">
             <h2 class="title">Historiques</h2>

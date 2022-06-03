@@ -20,7 +20,7 @@
             foreach ($soldes as $solde) {
                 $sTotal += $solde['solde'];
             }
-            $clients = $model->AllClient();
+            $clients = $model->RecentClient(3);
             $historique = $model->Allhistorical();
             $depot = $model->AllDeposite();
             $dTotal = 0;
