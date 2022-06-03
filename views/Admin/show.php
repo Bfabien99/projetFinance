@@ -1,7 +1,7 @@
 <div id="show">
     <?php if(!empty($client)):?>
         <div id="info">
-        <img src="/projetFinance/uploads/user/<?=$client['profil_pic']?>" width="100%" style="border-radius:50%" alt="" class="pic3">
+        <img src="/projetFinance/uploads/user/<?=!empty($client['profil_pic']) ? $client['profil_pic']:'profilepic.png' ?>" alt="profilepic" class="pic">
             <div class="box"><h3>Nom :</h3> <p><?= $client['nom'] ?></p></div>
             <div class="box"><h3>Prenoms :</h3> <p><?= $client['prenoms'] ?></p></div>
             <div class="box"><h3>Contact :</h3> <p><?= $client['contact'] ?></p></div>

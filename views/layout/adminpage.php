@@ -194,6 +194,10 @@
             background-color: #ccc;
         }
 
+        #liste .pic{
+            width: 100px;
+        }
+
         #show{
             display: flex;
             flex-direction: column;
@@ -208,6 +212,48 @@
 
         #show #info{
             max-width: 500px;
+        }
+
+        #show #info .box h3{
+            font-weight: 300;
+        }
+
+        #show #info .box p{
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        #show .pic{
+            display: flex;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+           border: 1px solid #e00d72;
+        }
+
+        #show #soldesClient .soldeactuel h2{
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+
+        #show #soldesClient .soldeactuel P{
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+
+        #show .historiques .solde h3, #historiques .solde h3{
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+
+        #show .historiques .solde .argent, #historiques .solde .argent{
+            font-size: 1.7em;
+            font-weight: 600;
+        }
+
+        #historiques .solde .nom{
+            font-weight: 600;
+            font-style: italic;
         }
 
         /* Params page */
@@ -240,7 +286,7 @@
 <body>
     <div class="navigation">
         <h2>Admin</h2>
-        <img src="https://via.placeholder.com/150" alt="" width="50px" height="50px" style="border-radius:50%;">
+        <img src="/projetFinance/uploads/user/adminpic.png" alt="" width="50px" height="50px" style="border-radius:50%;">
         <ul>
             <li><i class="bi bi-speedometer2"></i><a href="/projetFinance/admin">Dashboard</a></li>
             <li><i class="bi bi-people"></i><a href="/projetFinance/admin/liste">Liste des clients</a></li>
