@@ -14,7 +14,7 @@
 
             <div id="msg"></div>
 
-                <img src="/projetFinance/uploads/user/<?=$datas['profil_pic']?>" class="pic" alt="profile">
+                <img src="/projetFinance/uploads/user/<?= !empty($datas['profil_pic']) ?  $datas['profil_pic']:'profilepic.png' ?>" class="pic" alt="profile">
 
                 <div class="group fileinput">
                     <span class="filebox">Choisir Image</span>
