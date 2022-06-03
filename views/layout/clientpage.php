@@ -321,7 +321,7 @@
 </head>
 <body>
     <div class="navigation">
-        <h3>ESPACE CLIENT</h3>
+        <img src="/projetFinance/assets/img/xbank.png" alt="" width="200px" height="200px">
         <ul>
             <li><i class="bi bi-house-door-fill"></i><a href="/projetFinance/customer">Accueil</a></li>
             <li><i class="bi bi-clock-history"></i><a href="/projetFinance/customer/historical">Historique</a></li>

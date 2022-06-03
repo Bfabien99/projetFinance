@@ -25,7 +25,7 @@
         }
 
         .title{
-            font-size: 72px;
+            font-size: 1.5em;
             text-align: center;
             padding: 1em;
             text-decoration: underline;
@@ -72,12 +72,12 @@
          <a href="login" class="login">Se Connecter</a><a href="inscription" class="signup">Ouvrir un compte</a>
     </div>
     <div class="block">
-        <h1 class="title">X-BANK</h1>
+    <img src="/projetFinance/assets/img/xbank.png" alt="" width="200px" height="200px" style="display: flex;margin:0 auto;border-radius:50%">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas eos eligendi vel, incidunt nesciunt deserunt itaque sunt nostrum voluptatem minima maiores sit soluta corporis maxime qui aliquid. Quod, dolorum.</p>
     </div>
     
     <div class="block">
-        <h1 class="title">Pourquoi Choisir XBANK ?</h1>
+        <h3 class="title">Pourquoi Choisir XBANK ?</h3>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas eos eligendi vel, incidunt nesciunt deserunt itaque sunt nostrum voluptatem minima maiores sit soluta corporis maxime qui aliquid. Quod, dolorum.</p>
     </div>
     </div>

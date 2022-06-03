@@ -109,7 +109,7 @@
     <div class="container">
 
         <div class="block">
-            <h1 class="title">X-BANK</h1>
+        <img src="/projetFinance/assets/img/xbank.png" alt="" width="200px" height="200px" style="display: flex;margin:0 auto;border-radius:50%">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, illum!</p>
         </div>
 
