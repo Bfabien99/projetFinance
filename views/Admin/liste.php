@@ -23,7 +23,7 @@
         <tbody id="tbody">
             <?php foreach($clients as $client):?>
                 <tr>
-                    <td><img src="/projetFinance/uploads/user/<?=!empty($client['profil_pic']) ? $client['profil_pic']:'profilepic.png' ?>" alt="profilepic" class="pic"></td>
+                    <td><img src="/projetFinance/uploads/user/<?= !empty($client['profil_pic']) ?  $client['profil_pic']:'profilepic.png' ?>" alt="profilepic" class="pic"></td>
                     <td><?= ucfirst($client["nom"])?></td>
                     <td><?= ucwords($client["prenoms"])?></td>
                     <td><?= $client["solde"]?></td>
